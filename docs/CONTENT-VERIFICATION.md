@@ -16,7 +16,7 @@ Items below were taken from the best available source but should be confirmed by
 | 10 | Bed capacity | Not stated on site | Brochure said 76 (old) | — |
 | 11 | Insurance list | SHA + "major private insurers" | Brochure named Britam, CIC, Africa Medilink, Bliss (2016) | `src/content/site.ts` |
 | 12 | SafeCare accreditation | Not claimed | Brochure (old) | `src/content/site.ts` |
-| 13 | Leadership names | CMO Dr Jesse Gitaka only; others by role | Board deck 2026 | `src/content/leadership.ts` |
+| 13 | Leadership names and spelling | Sr Packium Lourdu (CEO), Dr Jesse Gitaka (CMO), Esther Thea (Head of Nursing), John Murimi (Finance Manager) | Photos supplied 8 Sept 2026; names taken from file names | `src/content/leadership.ts` |
 | 14 | Facebook page URL | facebook.com/Maryhelpofthesick | Public listing | `src/content/site.ts` |
 | 15 | Branch: St Cyril Mukuyu-ini, Gatundu North | Mentioned as satellite facility | Public listing (unverified) | `src/content/site.ts` |
 | 16 | Ambulance availability | "Ambulance available — call ahead" | 2024 strategic plan review | `src/content/services.ts` |

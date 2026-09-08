@@ -87,7 +87,7 @@ Global elements: emergency top bar, header with primary navigation and "Book app
 History timeline (1960s founding as Thika Maternity Hospital → SMMI management → 2022 theatres and renal unit → 2023 laparoscopy → 2025 60th anniversary and Mother and Child Centre), mission, vision, SMILES values (Service, Mindfulness, Integrity, Leadership & Professionalism, Excellence, Synergy), Catholic identity and chaplaincy, Marian grotto photo, community.
 
 ### 4.3 Leadership & governance
-Ownership (Archdiocese of Nairobi), management (SMMI Sisters), Board of Directors, Hospital Management Team roles, Chief Medical Officer (Dr Jesse Gitaka), Quality Improvement oversight. Names only where confirmed.
+Ownership (Archdiocese of Nairobi), management (SMMI Sisters), Board of Directors, Hospital Management Team, and a hospital leadership grid with uniform 4:5 portraits: Sr Packium Lourdu (CEO), Dr Jesse Gitaka (CMO), Esther Thea (Head of Nursing), John Murimi (Finance Manager). Names and titles only, no bios.
 
 ### 4.4 Services
 Grouped into: Emergency & Outpatient · Maternity & Child Health · Inpatient & Surgery · Renal & Specialty Care · Diagnostics & Pharmacy · Rehabilitation & Wellbeing. Each service page: hero, overview, what we offer (bullets), who it is for, how to access (walk-in, appointment, referral), hours, related services, CTA.

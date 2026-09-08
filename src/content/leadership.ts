@@ -7,7 +7,7 @@ export interface GovernanceBody {
 export interface Leader {
   name: string;
   title: string;
-  bio: string;
+  image: string;
 }
 
 export const governance: GovernanceBody[] = [
@@ -33,23 +33,13 @@ export const governance: GovernanceBody[] = [
     name: "Hospital Management Team",
     role: "Day-to-day leadership",
     description:
-      "Led by the Hospital Administrator and including the Chief Medical Officer, Nursing Services Manager (Matron), Finance and Administration, the Management Team delivers the strategic plan and runs the hospital every day.",
+      "Led by the Chief Executive Officer and including the Chief Medical Officer, the Head of Nursing and the Finance Manager, the Management Team delivers the strategic plan and runs the hospital every day.",
   },
 ];
 
 export const leaders: Leader[] = [
-  {
-    name: "Dr Jesse Gitaka",
-    title: "Chief Medical Officer",
-    bio: "Dr Gitaka leads clinical standards, multidisciplinary care, professional practice and patient safety assurance across the hospital. A physician-scientist with published research in antimicrobial stewardship, infectious disease and maternal health, he coordinates the hospital's research programme and its partnerships with academic institutions.",
-  },
-];
-
-export const managementRoles = [
-  "Hospital Administrator",
-  "Chief Medical Officer",
-  "Nursing Services Manager (Matron)",
-  "Finance and Administration Manager",
-  "Quality Improvement Lead",
-  "Chaplaincy",
+  { name: "Sr Packium Lourdu", title: "Chief Executive Officer", image: "/images/leadership/sr-packium-lourdu.jpg" },
+  { name: "Dr Jesse Gitaka", title: "Chief Medical Officer", image: "/images/leadership/jesse-gitaka.jpg" },
+  { name: "Esther Thea", title: "Head of Nursing", image: "/images/leadership/esther-thea.jpg" },
+  { name: "John Murimi", title: "Finance Manager", image: "/images/leadership/john-murimi.jpg" },
 ];

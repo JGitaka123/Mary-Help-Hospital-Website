@@ -78,6 +78,7 @@ export const site = {
   organisation: {
     archdiocese: "Archdiocese of Nairobi",
     congregation: "Salesian Missionaries of Mary Immaculate (SMMI)",
+    ceo: "Sr Packium Lourdu",
     cmo: "Dr Jesse Gitaka",
   },
 } as const;

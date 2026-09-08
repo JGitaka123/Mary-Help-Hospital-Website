@@ -3,7 +3,8 @@ import { Building2, Church, Landmark, ShieldCheck, Users } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { CtaBanner } from "@/components/ui/CtaBanner";
-import { governance, leaders, managementRoles } from "@/content/leadership";
+import Image from "next/image";
+import { governance, leaders } from "@/content/leadership";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -32,7 +33,7 @@ export default function LeadershipPage() {
       />
       <Section>
         <SectionHeader eyebrow="Governance structure" title="Who is responsible for what" />
-        <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {governance.map((g, i) => {
             const Icon = icons[i % icons.length];
             return (
@@ -50,29 +51,21 @@ export default function LeadershipPage() {
       </Section>
 
       <Section tone="alt">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <SectionHeader eyebrow="Clinical leadership" title="Medical leadership" />
-            <ul className="mt-8 space-y-6">
-              {leaders.map((l) => (
-                <li key={l.name} className="rounded-3xl border border-line bg-white p-7 shadow-soft">
-                  <h3 className="text-2xl">{l.name}</h3>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue">{l.title}</p>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{l.bio}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <SectionHeader eyebrow="Hospital Management Team" title="Running the hospital every day" />
-            <ul className="mt-8 divide-y divide-line rounded-3xl border border-line bg-white shadow-soft">
-              {managementRoles.map((r) => (
-                <li key={r} className="px-6 py-4 font-medium text-navy">{r}</li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-muted">Visiting consultants are credentialed under the hospital&rsquo;s Admitting Rights Policy and Code of Conduct.</p>
-          </div>
-        </div>
+        <SectionHeader eyebrow="Hospital leadership" title="The team leading Mary Help" lead="Our senior leaders are responsible for the day-to-day running of the hospital and for delivering its mission of compassionate, affordable care." />
+        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {leaders.map((l) => (
+            <li key={l.name} className="overflow-hidden rounded-lg border border-line bg-white shadow-soft">
+              <div className="relative aspect-[4/5] bg-blue-mist">
+                <Image src={l.image} alt={`Portrait of ${l.name}, ${l.title}`} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+              </div>
+              <div className="border-t-4 border-blue p-5">
+                <h3 className="text-lg leading-snug">{l.name}</h3>
+                <p className="mt-1 font-display text-sm font-medium text-blue">{l.title}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm text-muted">Visiting consultants are credentialed under the hospital&rsquo;s Admitting Rights Policy and Code of Conduct.</p>
       </Section>
 
       <Section>
