@@ -5,7 +5,7 @@ interface SectionProps {
   id?: string;
   children: ReactNode;
   className?: string;
-  tone?: "white" | "alt" | "navy" | "blue-mist";
+  tone?: "white" | "alt" | "navy" | "blue-mist" | "blue";
   padding?: "normal" | "tight" | "loose";
 }
 
@@ -13,13 +13,14 @@ const tones = {
   white: "bg-surface",
   alt: "bg-surface-alt",
   navy: "bg-navy text-white",
+  blue: "bg-blue text-white",
   "blue-mist": "bg-blue-mist",
 };
 
 const paddings = {
-  tight: "py-12 sm:py-16",
-  normal: "py-16 sm:py-24",
-  loose: "py-20 sm:py-32",
+  tight: "py-10 sm:py-14",
+  normal: "py-14 sm:py-20",
+  loose: "py-20 sm:py-28",
 };
 
 export function Section({ id, children, className, tone = "white", padding = "normal" }: SectionProps) {
@@ -44,20 +45,17 @@ export function SectionHeader({ eyebrow, title, lead, align = "left", tone = "li
   const Heading = as;
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
-      {eyebrow && (
-        <p className={cn("eyebrow", tone === "dark" && "text-gold", align === "center" && "justify-center")}>{eyebrow}</p>
-      )}
+      {eyebrow && <p className={cn("eyebrow", tone === "dark" && "text-blue-bright")}>{eyebrow}</p>}
       <Heading
         className={cn(
-          "mt-3 text-3xl leading-[1.1] sm:text-4xl lg:text-[2.75rem]",
+          "mt-2 text-[1.75rem] leading-tight sm:text-3xl lg:text-[2.25rem]",
+          align === "center" ? "heading-rule-center" : "heading-rule",
           tone === "dark" ? "text-white" : "text-navy",
         )}
       >
         {title}
       </Heading>
-      {lead && (
-        <p className={cn("mt-4 text-lg leading-relaxed", tone === "dark" ? "text-white/80" : "text-muted")}>{lead}</p>
-      )}
+      {lead && <p className={cn("mt-4 text-lg leading-relaxed", tone === "dark" ? "text-white/85" : "text-muted")}>{lead}</p>}
     </div>
   );
 }

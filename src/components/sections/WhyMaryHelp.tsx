@@ -1,71 +1,67 @@
 import Image from "next/image";
-import { Cross, HandHeart, Sparkles, Users } from "lucide-react";
-import { Section, SectionHeader } from "@/components/ui/Section";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { Section } from "@/components/ui/Section";
 
 const pillars = [
-  {
-    icon: Cross,
-    title: "Rooted in faith and compassion",
-    text: "We continue the healing ministry of Christ. Every patient is received with dignity, whatever their faith or means.",
-  },
-  {
-    icon: HandHeart,
-    title: "Affordable, transparent care",
-    text: "As a not-for-profit mission hospital our charges are fair, our billing is clear and SHA cover is accepted.",
-  },
-  {
-    icon: Users,
-    title: "Experienced clinical teams",
-    text: "Full-time doctors, clinical officers and midwives supported by more than twenty visiting consultants across the specialties.",
-  },
-  {
-    icon: Sparkles,
-    title: "A growing platform of care",
-    text: "Two modern theatres, a renal unit, laparoscopic surgery, a high dependency unit and a new Mother and Child Centre.",
-  },
+  { title: "Rooted in faith and compassion", text: "We continue the healing ministry of Christ. Every patient is received with dignity, whatever their faith or means." },
+  { title: "Affordable, transparent care", text: "As a not-for-profit mission hospital our charges are fair, our billing is clear and SHA cover is accepted." },
+  { title: "Experienced clinical teams", text: "Full-time doctors, clinical officers and midwives supported by more than twenty visiting consultants." },
+  { title: "A growing platform of care", text: "Two modern theatres, a renal unit, laparoscopic surgery, a high dependency unit and the new Mother and Child Centre." },
 ];
 
 export function WhyMaryHelp() {
   return (
-    <Section>
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-        <div className="relative order-2 lg:order-1">
-          <div className="overflow-hidden rounded-3xl shadow-lift">
+    <Section tone="alt">
+      <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+        <div>
+          <p className="eyebrow">Welcome</p>
+          <h2 className="heading-rule mt-2 text-[1.75rem] leading-tight sm:text-3xl lg:text-[2.25rem]">
+            Healthcare with a heart, in the heart of Thika
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-ink/85">
+            Mary Help of the Sick Mission Hospital is a Catholic mission hospital owned by the Archdiocese of Nairobi and managed by the Salesian Missionaries of Mary Immaculate (SMMI) Sisters. For over six decades we have combined clinical experience with a calm, green campus made for healing.
+          </p>
+          <ul className="mt-7 grid gap-5 sm:grid-cols-2">
+            {pillars.map((p) => (
+              <li key={p.title} className="flex gap-3">
+                <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue text-white">
+                  <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="text-[1.05rem] leading-snug">{p.title}</h3>
+                  <p className="mt-1 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <Link href="/about" className="mt-8 inline-flex items-center gap-2 font-display font-medium text-blue hover:underline">
+            More about the hospital
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="grid gap-4">
+          <div className="overflow-hidden rounded-lg shadow-soft">
             <Image
               src="/images/team-2026.jpg"
               alt="Doctors, nurses, Sisters and administrative staff of Mary Help of the Sick Mission Hospital gathered on the hospital grounds"
               width={1280}
               height={590}
               sizes="(min-width: 1024px) 45vw, 100vw"
-              className="aspect-[16/10] w-full object-cover"
+              className="aspect-[16/9] w-full object-cover"
             />
           </div>
-          <blockquote className="absolute -bottom-6 left-4 right-4 rounded-2xl bg-navy p-5 text-white shadow-lift sm:left-8 sm:right-auto sm:max-w-sm">
-            <p className="font-display text-lg italic leading-snug">
-              &ldquo;To answer the call of Christ by providing holistic, affordable and compassionate healthcare.&rdquo;
-            </p>
-            <footer className="mt-2 text-xs uppercase tracking-[0.18em] text-gold">Our mission</footer>
-          </blockquote>
-        </div>
-        <div className="order-1 lg:order-2">
-          <SectionHeader
-            eyebrow="Why Mary Help"
-            title="Healthcare with a heart, in the heart of Thika"
-            lead="Owned by the Archdiocese of Nairobi and managed by the SMMI Sisters, we combine decades of clinical experience with a calm, green campus that is made for healing."
-          />
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2">
-            {pillars.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="flex gap-4">
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-light text-navy">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="text-lg leading-snug">{title}</h3>
-                  <p className="mt-1.5 text-[0.95rem] leading-relaxed text-muted">{text}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="grid grid-cols-[1fr_1.4fr] gap-4">
+            <div className="overflow-hidden rounded-lg shadow-soft">
+              <Image src="/images/grotto-wide.jpg" alt="The Marian grotto in the hospital grounds" width={1392} height={928} sizes="20vw" className="aspect-[4/5] w-full object-cover" />
+            </div>
+            <blockquote className="flex flex-col justify-center rounded-lg bg-navy p-6 text-white">
+              <p className="font-display text-[1.05rem] font-medium leading-snug">
+                &ldquo;To answer the call of Christ by providing holistic, affordable and compassionate healthcare.&rdquo;
+              </p>
+              <footer className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-blue-bright">Our mission</footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     </Section>

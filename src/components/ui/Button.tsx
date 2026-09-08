@@ -6,21 +6,21 @@ type Variant = "primary" | "secondary" | "outline" | "ghost" | "emergency" | "wh
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gold/50 disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-md font-display font-medium transition duration-150 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-bright/40 disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-blue text-white shadow-soft hover:bg-blue-dark hover:shadow-lift",
-  secondary: "bg-navy text-white shadow-soft hover:bg-navy-deep",
-  outline: "border border-navy/20 bg-white text-navy hover:border-navy/40 hover:bg-surface-alt",
+  primary: "bg-blue text-white hover:bg-blue-dark",
+  secondary: "bg-navy text-white hover:bg-navy-deep",
+  outline: "border border-navy/25 bg-white text-navy hover:border-blue hover:text-blue",
   ghost: "text-blue hover:bg-blue-light",
-  emergency: "bg-terracotta text-white shadow-soft hover:bg-terracotta-dark hover:shadow-lift",
-  white: "bg-white text-navy shadow-soft hover:bg-blue-light",
+  emergency: "bg-terracotta text-white hover:bg-terracotta-dark",
+  white: "bg-white text-navy hover:bg-blue-light",
 };
 
 const sizes: Record<Size, string> = {
   sm: "min-h-10 px-4 text-sm",
   md: "min-h-11 px-5 text-[0.95rem]",
-  lg: "min-h-12 px-7 text-base",
+  lg: "min-h-12 px-6 text-base",
 };
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, "className"> {

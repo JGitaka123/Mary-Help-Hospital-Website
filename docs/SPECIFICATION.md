@@ -126,21 +126,23 @@ Large tel buttons, what to do in an emergency, ambulance, directions, Accident &
 
 ## 5. Design system
 
-**Brand direction:** calm, trustworthy, warm and Catholic-rooted without being ornate. Draw on the campus: terracotta roof tiles, white pillars, deep Marian blue and the green lawns.
+**Brand direction:** the hospital's existing identity as seen on its posters and signage: the Madonna and Child (Mary Help of the Sick) in a white-ringed circle as the logo mark, a bright royal blue, red for emergency and accents, white space, and a rounded geometric sans (Poppins) for headings. The look is institutional and photographic rather than decorative: square-cornered cards, a two-tier hospital header (utility bar, identity row, navigation row with red active underline), full-bleed photo heroes and short red rules under headings.
 
 | Token | Value | Use |
 |---|---|---|
-| `--color-navy` | `#0F2E48` | Headings, footer, primary dark surfaces |
-| `--color-blue` | `#1D5C96` | Primary buttons, links |
-| `--color-blue-light` | `#E8F1FA` | Tints, chips |
-| `--color-terracotta` | `#B8432B` | Emergency, accents, secondary CTA |
-| `--color-gold` | `#D9A441` | Highlights, icons |
-| `--color-green` | `#2E7D5B` | Success, wellbeing accents |
-| `--color-ink` | `#16202A` | Body text |
-| `--color-muted` | `#5B6B7A` | Secondary text |
-| `--color-surface` | `#FFFFFF` / `#F6F8FB` | Page and card backgrounds |
+| `--color-navy` | `#0A2A52` | Headings, footer, dark hero overlays |
+| `--color-blue` | `#0B6FC2` | Primary buttons, links, utility bar, stats band |
+| `--color-blue-bright` | `#0C8FDF` | Accent labels on dark backgrounds (poster blue) |
+| `--color-blue-light` / `-mist` | `#E4F1FB` / `#F1F7FC` | Tints, light heroes |
+| `--color-terracotta` | `#C8102E` | Emergency, active navigation rule, heading rules |
+| `--color-gold` | `#D4A437` | Sparing highlights (values, timeline) |
+| `--color-green` | `#1F7A4D` | Success states, schedule ticks |
+| `--color-ink` / `--color-muted` | `#1B2430` / `#5A6875` | Body and secondary text |
+| `--color-surface` / `-alt` | `#FFFFFF` / `#F5F8FB` | Page and section backgrounds |
 
-**Typography:** Fraunces (display/serif headings, via `next/font/google`) and Inter (body/UI). Scale: 14 / 16 / 18 / 20 / 24 / 32 / 40 / 56 px. Line length ≤ 70ch.
+**Logo:** `public/images/logo-mark.png` (circle-cropped Madonna and Child) and `logo-mark-white-ring.png`; app icons in `src/app/icon.png` and `apple-icon.png`. The wordmark is set in Poppins: "Mary Help of the Sick" over "MISSION HOSPITAL".
+
+**Typography:** Poppins 500/600/700 for headings, navigation, buttons and labels (matches the hospital's printed material); Source Sans 3 for body text at 17px. Line length ≤ 70ch.
 
 **Components:** Button (primary, secondary, outline, danger/emergency), Card, Section header (eyebrow + title + lead), Icon tile, Stat, Badge/Chip, Accordion (FAQ), Schedule table, Breadcrumb, Form fields with validation messages, Emergency bar, Header (sticky, mobile drawer), Footer, Map embed, Prose container, CTA banner.
 

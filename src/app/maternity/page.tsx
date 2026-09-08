@@ -88,7 +88,7 @@ export default function MaternityPage() {
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {journey.map(({ icon: Icon, title, text, href }, i) => (
             <li key={title} className="relative rounded-2xl border border-line bg-white p-6 shadow-soft">
-              <span className="absolute -top-3 left-6 rounded-full bg-gold px-2.5 py-0.5 text-xs font-bold text-navy">Step {i + 1}</span>
+              <span className="absolute -top-3 left-6 rounded-md bg-blue px-2.5 py-0.5 font-display text-xs font-semibold text-white">Step {i + 1}</span>
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-light text-blue">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>

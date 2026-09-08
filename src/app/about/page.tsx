@@ -6,7 +6,6 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { timeline, values } from "@/content/timeline";
-import { site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -35,7 +34,7 @@ export default function AboutPage() {
             <p className="eyebrow">Who we are</p>
             <h2 className="!mt-3 text-3xl sm:text-4xl">A hospital built by faith and community</h2>
             <p>
-              Mary Help of the Sick Mission Hospital began in the early 1960s as a maternity hospital serving the mothers and newborns of Thika. Today it is a {site.level.toLowerCase()} with 24-hour emergency, outpatient, maternity, surgical, renal, diagnostic and rehabilitation services, {site.ownership.toLowerCase()} and {site.management.toLowerCase()}.
+              Mary Help of the Sick Mission Hospital began in the early 1960s as a maternity hospital serving the mothers and newborns of Thika. Today it is a KEPH Level 4 hospital with 24-hour emergency, outpatient, maternity, surgical, renal, diagnostic and rehabilitation services, owned by the Archdiocese of Nairobi and managed by the Salesian Missionaries of Mary Immaculate (SMMI) Sisters.
             </p>
             <p>
               A decade ago the hospital was a modest facility with weather-beaten buildings and a single outpatient room. Driven by faith and a community that rallied behind every expansion, it has grown into a modern campus with a bustling outpatient wing, two operating theatres, a renal unit, a high dependency unit, and in 2025 a new Mother and Child Centre, Speech Therapy Unit and expanded Research Unit.
@@ -56,6 +55,21 @@ export default function AboutPage() {
                 <Image src="/images/grotto-team-portrait.jpg" alt="Sisters and staff at the Marian grotto" width={1200} height={1440} sizes="25vw" className="aspect-square w-full object-cover object-top" />
               </div>
             </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="blue-mist" padding="tight">
+        <div className="grid items-center gap-8 md:grid-cols-[auto_1fr]">
+          <div className="mx-auto w-40 overflow-hidden rounded-lg shadow-lift ring-4 ring-white sm:w-48">
+            <Image src="/images/mary-help-of-the-sick.jpg" alt="Painting of the Virgin Mary holding the child Jesus, the image of Mary Help of the Sick used by the hospital" width={388} height={518} sizes="12rem" className="w-full" />
+          </div>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Our patroness</p>
+            <h2 className="heading-rule mt-2 text-[1.75rem] leading-tight sm:text-3xl">Mary Help of the Sick, pray for us</h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink/85">
+              The hospital is placed under the patronage of the Blessed Virgin Mary under her title Help of the Sick (Salus Infirmorum), invoked in the Litany of Loreto for all who suffer illness. Her image welcomes every patient at our gate, and the Marian grotto in the hospital grounds is a place of quiet prayer for patients, families and staff of every faith.
+            </p>
           </div>
         </div>
       </Section>

@@ -13,7 +13,7 @@ export function hospitalSchema() {
     telephone: site.phones.main.tel,
     email: site.email,
     image: `${site.url}/images/entrance.jpg`,
-    logo: `${site.url}/icon.svg`,
+    logo: `${site.url}/images/logo-mark.png`,
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,

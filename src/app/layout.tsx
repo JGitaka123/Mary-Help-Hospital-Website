@@ -1,21 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Poppins, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
-import { EmergencyBar } from "@/components/layout/EmergencyBar";
+import { TopBar } from "@/components/layout/TopBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCallButton } from "@/components/layout/MobileCallButton";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { hospitalSchema } from "@/lib/schema";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["opsz", "SOFT"],
-});
+const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-sans", display: "swap", weight: ["400", "600", "700"] });
+const poppins = Poppins({ subsets: ["latin"], variable: "--font-poppins", display: "swap", weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -37,23 +32,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f2e48",
+  themeColor: "#0b6fc2",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-KE" className={`${inter.variable} ${fraunces.variable} h-full`}>
+    <html lang="en-KE" className={`${sourceSans.variable} ${poppins.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold focus:px-4 focus:py-2 focus:font-semibold focus:text-navy"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-gold focus:px-4 focus:py-2 focus:font-semibold focus:text-navy"
         >
           Skip to main content
         </a>
         <JsonLd data={hospitalSchema()} />
-        <EmergencyBar />
+        <TopBar />
         <Header />
         <main id="main" className="flex-1">
           {children}

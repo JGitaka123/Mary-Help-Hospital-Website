@@ -24,7 +24,8 @@ npm run check        # lint + typecheck + build
 ## Conventions
 
 - Server Components by default. Add `"use client"` only for interactivity (mobile nav, accordion, form).
-- Tailwind utilities with design tokens from `globals.css` (`navy`, `blue`, `terracotta`, `gold`, `green`, `ink`, `muted`, `surface`). No inline hex colours in components.
+- Tailwind utilities with design tokens from `globals.css` (`navy`, `blue`, `blue-bright`, `terracotta` = brand red, `gold`, `green`, `ink`, `muted`, `surface`). No inline hex colours in components.
+- Brand look: Madonna and Child circle logo (`public/images/logo-mark*.png`), Poppins headings, Source Sans body, square-cornered cards, red heading rules (`.heading-rule`), photo-led sections. Avoid decorative gradients, blur blobs and pill-shaped cards.
 - Every page exports `metadata` (title ≤ 60 chars, description ≤ 155 chars). Use `buildMetadata()` from `src/lib/seo.ts`.
 - Every image uses `next/image` with meaningful `alt`. Decorative images use `alt=""`.
 - Accessibility: semantic landmarks, one `h1` per page, visible focus styles, 44 px touch targets, `prefers-reduced-motion` respected.

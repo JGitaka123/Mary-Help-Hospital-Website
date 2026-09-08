@@ -1,11 +1,16 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { site } from "@/content/site";
 
 export const alt = `${site.name}, Thika`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const logo = await readFile(join(process.cwd(), "public/images/logo-mark-white-ring.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -16,42 +21,28 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 64,
-          background: "linear-gradient(135deg, #0a1f31 0%, #0f2e48 55%, #1d5c96 100%)",
+          background: "linear-gradient(135deg, #0a2a52 0%, #0b6fc2 100%)",
           color: "white",
-          fontFamily: "Georgia, serif",
+          fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 72,
-              height: 72,
-              borderRadius: 18,
-              background: "white",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#0f2e48",
-              fontSize: 52,
-              fontWeight: 700,
-            }}
-          >
-            +
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={96} height={96} alt="" style={{ borderRadius: 999 }} />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 30, fontWeight: 700 }}>Mary Help of the Sick</div>
-            <div style={{ fontSize: 16, letterSpacing: 5, color: "#d9a441", fontFamily: "Arial, sans-serif" }}>MISSION HOSPITAL · THIKA</div>
+            <div style={{ fontSize: 34, fontWeight: 700 }}>Mary Help of the Sick</div>
+            <div style={{ fontSize: 18, letterSpacing: 4, color: "rgba(255,255,255,0.85)" }}>MISSION HOSPITAL · THIKA</div>
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ fontSize: 68, lineHeight: 1.05, maxWidth: 1000 }}>
-            Compassionate care for body, mind and spirit.
+        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <div style={{ fontSize: 62, lineHeight: 1.08, fontWeight: 700, maxWidth: 1000 }}>
+            Compassionate, affordable care for body, mind and spirit.
           </div>
-          <div style={{ fontSize: 26, color: "rgba(255,255,255,0.8)", fontFamily: "Arial, sans-serif" }}>
+          <div style={{ fontSize: 26, color: "rgba(255,255,255,0.85)" }}>
             24/7 emergency · Maternity &amp; newborn · Surgery · Dialysis · Specialist clinics
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, fontFamily: "Arial, sans-serif", color: "#d9a441" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, color: "rgba(255,255,255,0.9)" }}>
           <span>{site.phones.main.display}</span>
           <span>{site.url.replace(/^https?:\/\//, "")}</span>
         </div>

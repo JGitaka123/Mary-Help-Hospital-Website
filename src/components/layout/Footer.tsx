@@ -15,15 +15,24 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-navy text-white">
-      <div className="container-x grid gap-12 py-16 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-        <div>
-          <Logo tone="light" />
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/75">
-            A Catholic mission hospital continuing the healing ministry of Christ: holistic, affordable and compassionate care for body, mind and spirit. {site.ownership}, {site.management.toLowerCase()}.
+      <div className="border-b border-white/10">
+        <div className="container-x flex flex-col gap-4 py-6 md:flex-row md:items-center md:justify-between">
+          <p className="font-display text-lg font-medium">
+            In an emergency, call <a href={`tel:${site.phones.emergency.tel}`} className="text-white underline decoration-terracotta decoration-2 underline-offset-4">{site.phones.emergency.display}</a>. Accident &amp; Emergency is open 24 hours.
           </p>
-          <ul className="mt-6 space-y-3 text-sm">
+          <p className="text-sm text-white/70">{site.tagline}</p>
+        </div>
+      </div>
+
+      <div className="container-x grid gap-12 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div>
+          <Logo tone="light" size="lg" />
+          <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-white/80">
+            A Catholic mission hospital continuing the healing ministry of Christ through holistic, affordable and compassionate care. {site.ownership}. {site.management}.
+          </p>
+          <ul className="mt-6 space-y-3 text-[0.95rem]">
             <li className="flex gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-blue-bright" aria-hidden="true" />
               <span>
                 {site.address.street}, {site.address.town}
                 <br />
@@ -33,45 +42,27 @@ export function Footer() {
               </span>
             </li>
             <li className="flex gap-3">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-blue-bright" aria-hidden="true" />
               <span>
-                <a href={`tel:${site.phones.main.tel}`} className="hover:text-gold">
-                  {site.phones.main.display}
-                </a>
+                <a href={`tel:${site.phones.main.tel}`} className="hover:underline">{site.phones.main.display}</a>
                 {" · "}
-                <a href={`tel:${site.phones.mobile.tel}`} className="hover:text-gold">
-                  {site.phones.mobile.display}
-                </a>
+                <a href={`tel:${site.phones.mobile.tel}`} className="hover:underline">{site.phones.mobile.display}</a>
               </span>
             </li>
             <li className="flex gap-3">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
-              <a href={`mailto:${site.email}`} className="hover:text-gold">
-                {site.email}
-              </a>
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-blue-bright" aria-hidden="true" />
+              <a href={`mailto:${site.email}`} className="hover:underline">{site.email}</a>
             </li>
             <li className="flex gap-3">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
-              <span>Emergency, outpatient, maternity, lab, imaging and pharmacy: 24 hours</span>
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-blue-bright" aria-hidden="true" />
+              <span>Emergency, outpatient, maternity, laboratory, imaging and pharmacy: 24 hours</span>
             </li>
           </ul>
           <div className="mt-6 flex gap-3">
-            <a
-              href={site.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook page"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-gold hover:text-navy"
-            >
+            <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook page" className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 transition hover:bg-blue-bright">
               <FacebookIcon className="h-5 w-5" />
             </a>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-gold hover:text-navy"
-            >
+            <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 transition hover:bg-blue-bright">
               <MessageCircle className="h-5 w-5" aria-hidden="true" />
             </a>
           </div>
@@ -81,12 +72,11 @@ export function Footer() {
         <FooterColumn title="Care" links={footerLinks.care} />
         <FooterColumn title="Patients" links={footerLinks.patients} />
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {site.name}. {site.level}. All rights reserved.
-          </p>
-          <p className="font-display italic text-white/70">&ldquo;Mary Help of the Sick, pray for us.&rdquo;</p>
+
+      <div className="border-t border-white/10 bg-navy-deep">
+        <div className="container-x flex flex-col gap-2 py-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} {site.name}. {site.level}. All rights reserved.</p>
+          <p className="font-display text-white/75">Mary Help of the Sick, pray for us.</p>
         </div>
       </div>
     </footer>
@@ -96,11 +86,11 @@ export function Footer() {
 function FooterColumn({ title, links }: { title: string; links: readonly { label: string; href: string }[] }) {
   return (
     <div>
-      <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">{title}</h2>
-      <ul className="mt-4 space-y-2.5 text-sm">
+      <h2 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-blue-bright">{title}</h2>
+      <ul className="mt-4 space-y-2.5 text-[0.95rem]">
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="text-white/80 transition hover:text-white">
+            <Link href={l.href} className="text-white/85 transition hover:text-white hover:underline">
               {l.label}
             </Link>
           </li>
