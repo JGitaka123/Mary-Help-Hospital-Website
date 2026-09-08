@@ -95,7 +95,7 @@ export default function CareersPage() {
             <p className="eyebrow text-gold">Visiting consultants</p>
             <h2 className="mt-3 text-2xl text-white">Admitting rights and privileges</h2>
             <p className="mt-3 text-white/80">
-              Specialists wishing to admit and treat patients at the hospital are credentialed through the Medical Advisory Committee under our Doctors&rsquo; Admitting Rights Policy and Code of Conduct. This covers verified credentials, defined privileges, availability and on-call cover, documentation standards, safe prescribing and consent.
+              Specialists wishing to admit and treat patients at the hospital are credentialed under our Doctors&rsquo; Admitting Rights Policy and Code of Conduct. This covers verified credentials, defined privileges, availability and on-call cover, documentation standards, safe prescribing and consent.
             </p>
             <ButtonLink href="/contact" variant="white" className="mt-6">
               Enquire about admitting rights <ArrowRight className="h-4 w-4" aria-hidden="true" />

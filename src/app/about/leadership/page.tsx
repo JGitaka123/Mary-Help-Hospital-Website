@@ -70,7 +70,7 @@ export default function LeadershipPage() {
                 <li key={r} className="px-6 py-4 font-medium text-navy">{r}</li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-muted">Visiting consultants are credentialed through the Medical Advisory Committee under the hospital&rsquo;s Admitting Rights Policy and Code of Conduct.</p>
+            <p className="mt-4 text-sm text-muted">Visiting consultants are credentialed under the hospital&rsquo;s Admitting Rights Policy and Code of Conduct.</p>
           </div>
         </div>
       </Section>

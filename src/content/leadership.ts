@@ -35,12 +35,6 @@ export const governance: GovernanceBody[] = [
     description:
       "Led by the Hospital Administrator and including the Chief Medical Officer, Nursing Services Manager (Matron), Finance and Administration, the Management Team delivers the strategic plan and runs the hospital every day.",
   },
-  {
-    name: "Medical Advisory Committee",
-    role: "Clinical governance",
-    description:
-      "Reviews credentials and admitting privileges of doctors and visiting consultants, oversees clinical standards, audit and continuous professional development, and advises the Board on clinical matters.",
-  },
 ];
 
 export const leaders: Leader[] = [
