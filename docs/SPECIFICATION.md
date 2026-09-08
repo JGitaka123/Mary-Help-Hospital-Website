@@ -227,7 +227,7 @@ Content is drawn from hospital documents (profile, brochure, admitting-rights po
 - Do not publish internal performance statistics, patient counts or clinical outcome figures.
 - Do not use insurer logos or claim specific insurer contracts beyond "SHA accredited; major private insurers accepted — confirm at reception".
 - Do not publish personal phone numbers of staff; use hospital lines only.
-- Mark proposals (College, Clinical Research Centre) as projects in development.
+- Mark the College as a project in development. Do not publish the Clinical Research Centre Board proposal; describe research as collaboration for home-grown solutions.
 
 Items to confirm with hospital administration before launch are tracked in `docs/CONTENT-VERIFICATION.md`.
 

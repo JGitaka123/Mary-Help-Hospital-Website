@@ -104,7 +104,7 @@ export const news: NewsArticle[] = [
     body: [
       "The expanded Research Unit builds on the hospital's existing research experience, including sickle-cell surveillance with genetic counselling referral, and grant-supported work on AI-assisted clinical decision support for diabetes and hypertension care in Kiambu County.",
       "Led by the Chief Medical Officer, Dr Jesse Gitaka, the unit partners with academic institutions including Mount Kenya University to conduct ethically approved studies that answer questions relevant to the patients the hospital serves.",
-      "A proposal to establish a dedicated Clinical Research Centre on the hospital campus is under consideration by the Board.",
+      "Mary Help is committed to collaborating with clinical and public health researchers to develop home-grown solutions for the people it serves.",
     ],
   },
   {

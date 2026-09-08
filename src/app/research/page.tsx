@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Research & Innovation",
   description:
-    "The Research Unit at Mary Help of the Sick Mission Hospital partners with universities on maternal health, non-communicable diseases, sickle-cell surveillance, antimicrobial stewardship and AI-assisted clinical decision support.",
+    "Mary Help of the Sick Mission Hospital conducts clinical research with university partners on maternal health, non-communicable diseases, sickle-cell surveillance, antimicrobial stewardship and AI-assisted clinical decision support.",
   path: "/research",
   image: "/images/laboratory-staff.jpg",
 });
@@ -48,7 +48,7 @@ export default function ResearchPage() {
       <PageHero
         eyebrow="Research & innovation"
         title="Research born in Africa, to heal the world"
-        lead="Our expanded Research Unit is a hub of collaboration and discovery, turning local clinical data into better care for our patients and evidence for the wider world."
+        lead="Mary Help conducts and hosts clinical research with academic partners, turning local evidence into better care for our patients and home-grown solutions for our population."
         crumbs={[{ name: "Research", href: "/research" }]}
         image="/images/laboratory-equipment.jpg"
         imageAlt="Diagnostic analysers in the hospital laboratory"
@@ -57,10 +57,10 @@ export default function ResearchPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="prose-hospital">
-            <p className="eyebrow">Why research matters here</p>
+            <p className="eyebrow">Mary Help research activities</p>
             <h2 className="!mt-3 text-3xl sm:text-4xl">A research-active hospital is a stronger hospital</h2>
             <p>
-              Unveiled at our 60th anniversary in 2025, the expanded Research Unit builds on years of collaboration with academic institutions, including Mount Kenya University and its Centre for Research in Infectious Diseases, and the Centre for Research in Tropical Medicine and Community Development.
+              Mary Help conducts and hosts clinical research in partnership with academic institutions, including Mount Kenya University and its Centre for Research in Infectious Diseases, and the Centre for Research in Tropical Medicine and Community Development. Our work spans clinical surveillance, non-communicable disease innovation, antimicrobial stewardship and maternal health.
             </p>
             <p>
               Externally supported studies bring tangible benefits into the hospital: laboratory equipment, stronger data systems, and structured training and career development for clinical, laboratory and nursing staff. The evidence they generate translates directly into better diagnosis and treatment for the mothers, newborns and patients we serve.
@@ -96,12 +96,11 @@ export default function ResearchPage() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="rounded-3xl bg-navy p-8 text-white sm:p-10">
-            <p className="eyebrow text-gold">Project in development</p>
-            <h2 className="mt-3 text-3xl text-white">A Clinical Research Centre on campus</h2>
+            <p className="eyebrow text-gold">Our commitment</p>
+            <h2 className="mt-3 text-3xl text-white">Home-grown solutions for our population</h2>
             <p className="mt-4 text-white/80">
-              The hospital has the opportunity to convert an underused building into a dedicated Clinical Research Centre, in partnership with the Centre for Research in Tropical Medicine and Community Development and the Centre for Research in Infectious Diseases at Mount Kenya University. A recognised research site would place Mary Help among a small number of faith-based hospitals participating in national and international research, with the hospital proposed as a participating site for further externally funded studies.
+              Mary Help is committed to collaborating with clinical and public health researchers to develop home-grown solutions for the people we serve. By studying the conditions our patients actually face, in the setting where they are treated, we turn local evidence into better diagnosis, treatment and prevention for Thika and beyond.
             </p>
-            <p className="mt-4 text-sm text-white/60">This proposal is under consideration by the Board, subject to feasibility review and approvals.</p>
           </div>
           <div>
             <SectionHeader eyebrow="Work with us" title="Partner, collaborate, study" />

@@ -20,7 +20,7 @@ const projects = [
   { t: "Maternal and newborn care", d: "Specialist cover, newborn unit equipment and a dependable emergency pathway for mothers and babies." },
   { t: "Renal and continuing care", d: "More dialysis capacity and stronger follow-up across renal, medical, nutrition and rehabilitation services." },
   { t: "Diagnostics and specialist units", d: "Equipment, maintenance and clinical teams that grow in step with demand." },
-  { t: "Clinical Research Centre", d: "Renovation of an underused campus building into a dedicated research facility with university partners." },
+  { t: "Research collaboration", d: "Data systems, laboratory partnerships and protected research time so that local evidence shapes local care." },
   { t: "Tomorrow's cancer centre and ICU", d: "Long-term aspirations so that advanced care is available right here in Thika, not only in Nairobi or abroad." },
 ];
 

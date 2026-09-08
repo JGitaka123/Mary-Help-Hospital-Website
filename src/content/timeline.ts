@@ -63,7 +63,7 @@ export const timeline: Milestone[] = [
     period: "Today and beyond",
     title: "Building the next decade",
     description:
-      "Plans include a Clinical Research Centre, the Mary Help College of Nursing and Clinical Medicine, and, in time, a comprehensive cancer centre and intensive care unit so that advanced care is available right here in Thika.",
+      "Plans include growing clinical research collaboration, the Mary Help College of Nursing and Clinical Medicine, and, in time, a comprehensive cancer centre and intensive care unit so that advanced care is available right here in Thika.",
   },
 ];
 

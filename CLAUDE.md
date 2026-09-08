@@ -37,7 +37,7 @@ npm run check        # lint + typecheck + build
 - Founding year is 1963 (confirmed by the CMO, Sept 2026); "over six decades" is also fine.
 - Do not claim an operational ICU or a comprehensive cancer centre. These are aspirations; HDU is fine.
 - Do not publish internal statistics, patient counts, clinical outcome figures or staff personal numbers.
-- Proposals (College of Nursing and Clinical Medicine, Clinical Research Centre) are "projects in development".
+- The College of Nursing and Clinical Medicine is a "project in development". Do not publish the Clinical Research Centre Board proposal; describe research as collaboration for home-grown solutions (CMO instruction, Sept 2026).
 - Insurance: "SHA accredited; major private insurers accepted — confirm at reception". No insurer logos.
 - Research claims must use status verbs (reported, awarded, published, proposed).
 
