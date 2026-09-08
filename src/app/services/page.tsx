@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
-import { ServiceCard } from "@/components/sections/ServicesGrid";
+import { ServiceCard, indexImages } from "@/components/sections/ServicesGrid";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { serviceGroups, servicesByGroup } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
@@ -45,10 +45,10 @@ export default function ServicesPage() {
               <h2 className="mt-3 text-3xl sm:text-4xl">{g.name}</h2>
               <p className="mt-3 text-lg text-muted">{g.blurb}</p>
             </div>
-            <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className={gridFor(servicesByGroup(g.name).length)}>
               {servicesByGroup(g.name).map((s) => (
                 <li key={s.slug}>
-                  <ServiceCard service={s} />
+                  <ServiceCard service={s} image={indexImages[s.slug]} />
                 </li>
               ))}
             </ul>
@@ -58,6 +58,12 @@ export default function ServicesPage() {
       <CtaBanner />
     </>
   );
+}
+
+function gridFor(n: number) {
+  if (n <= 2) return "mt-8 grid gap-5 sm:grid-cols-2";
+  if (n === 4) return "mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4";
+  return "mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 }
 
 function slugify(s: string) {

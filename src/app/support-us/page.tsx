@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Support Mary Help of the Sick Mission Hospital, Thika: donate, give equipment, partner with us, donate blood or pray for our mission of affordable, compassionate care.",
   path: "/support-us",
-  image: "/images/community-outreach.jpg",
+  image: "/images/grotto-wide.jpg",
 });
 
 const projects = [
@@ -32,8 +32,8 @@ export default function SupportPage() {
         title="Be part of the healing"
         lead="Every expansion in our history has been carried by the community: the Archdiocese, the Sisters, partners, friends and patients who believed. Join them."
         crumbs={[{ name: "Support us", href: "/support-us" }]}
-        image="/images/community-outreach.jpg"
-        imageAlt="Hospital staff with members of the community"
+        image="/images/grotto-wide.jpg"
+        imageAlt="The Marian grotto in the hospital grounds"
       />
 
       <Section>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Mary Help of the Sick Mission Hospital">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a2a52"/><stop offset="1" stop-color="#0b6fc2"/></linearGradient></defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="2" fill="none"><circle cx="600" cy="400" r="260"/><circle cx="600" cy="400" r="340"/></g>
+  <circle cx="600" cy="360" r="118" fill="#ffffff"/>
+  <path d="M600 292 c-10 0-18 8-18 18v34h-34c-10 0-18 8-18 18v14c0 10 8 18 18 18h34v40c0 10 8 18 18 18s18-8 18-18v-40h34c10 0 18-8 18-18v-14c0-10-8-18-18-18h-34v-34c0-10-8-18-18-18z" fill="#0b6fc2"/>
+  <text x="600" y="560" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="600" fill="#ffffff">Mary Help of the Sick</text>
+  <text x="600" y="606" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="20" letter-spacing="6" fill="#ffffff" fill-opacity="0.8">MISSION HOSPITAL · THIKA</text>
+</svg>

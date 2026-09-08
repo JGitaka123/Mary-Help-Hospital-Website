@@ -52,16 +52,22 @@ export default function LeadershipPage() {
 
       <Section tone="alt">
         <SectionHeader eyebrow="Hospital leadership" title="The team leading Mary Help" lead="Our senior leaders are responsible for the day-to-day running of the hospital and for delivering its mission of compassionate, affordable care." />
-        <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
           {leaders.map((l) => (
-            <li key={l.name} className="overflow-hidden rounded-lg border border-line bg-white shadow-soft">
-              <div className="relative aspect-[4/5] bg-blue-mist">
-                <Image src={l.image} alt={`Portrait of ${l.name}, ${l.title}`} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+            <li key={l.name} className="flex flex-col items-center text-center">
+              <div className="relative h-44 w-44 rounded-full bg-gradient-to-br from-blue-bright to-navy p-[4px] shadow-lift sm:h-48 sm:w-48">
+                <div className="relative h-full w-full overflow-hidden rounded-full ring-4 ring-white">
+                  {l.image ? (
+                    <Image src={l.image} alt={`Portrait of ${l.name}, ${l.title}`} fill sizes="12rem" className="object-cover object-top" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-blue-light font-display text-4xl font-semibold text-blue" role="img" aria-label={`${l.name}, ${l.title}`}>
+                      {initials(l.name)}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="border-t-4 border-blue p-5">
-                <h3 className="text-lg leading-snug">{l.name}</h3>
-                <p className="mt-1 font-display text-sm font-medium text-blue">{l.title}</p>
-              </div>
+              <h3 className="mt-5 text-lg leading-snug">{l.name}</h3>
+              <p className="mt-1 font-display text-sm font-medium text-blue">{l.title}</p>
             </li>
           ))}
         </ul>
@@ -87,4 +93,13 @@ export default function LeadershipPage() {
       <CtaBanner />
     </>
   );
+}
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .filter((w) => !w.endsWith("."))
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("");
 }

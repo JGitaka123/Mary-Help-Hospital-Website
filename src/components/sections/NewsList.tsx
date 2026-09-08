@@ -14,8 +14,9 @@ export function NewsCard({ article }: { article: NewsArticle }) {
             src={article.image}
             alt=""
             fill
+            unoptimized={article.image.endsWith(".svg")}
             sizes="(min-width: 1024px) 33vw, 100vw"
-            className={article.poster ? "object-contain p-3" : "object-cover transition duration-500 group-hover:scale-[1.03]"}
+            className={article.poster && !article.image.endsWith(".svg") ? "object-contain p-3" : "object-cover transition duration-500 group-hover:scale-[1.03]"}
           />
         ) : (
           <div className="h-full w-full bg-navy" />
@@ -60,7 +61,7 @@ export function NewsList() {
               <Link href={`/news/${a.slug}`} className="group flex gap-4 p-4 transition hover:bg-blue-mist">
                 {a.image && (
                   <span className="relative hidden h-20 w-24 shrink-0 overflow-hidden rounded-md bg-blue-light sm:block">
-                    <Image src={a.image} alt="" fill sizes="96px" className={a.poster ? "object-contain p-1" : "object-cover"} />
+                    <Image src={a.image} alt="" fill unoptimized={a.image.endsWith(".svg")} sizes="96px" className={a.poster && !a.image.endsWith(".svg") ? "object-contain p-1" : "object-cover"} />
                   </span>
                 )}
                 <span className="min-w-0">

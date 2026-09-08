@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="t">
+  <title id="t">Illustration of a calm mind: a profile with leaves growing from it under a warm sun</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf4fc"/><stop offset="1" stop-color="#f7fbfe"/></linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe9b8"/><stop offset="1" stop-color="#f1cf7a"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5fb48a"/><stop offset="1" stop-color="#1f7a4d"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c8fdf"/><stop offset="1" stop-color="#0b6fc2"/></linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1080" cy="330" r="230" fill="url(#sun)" opacity="0.9"/>
+  <g stroke="#0b6fc2" stroke-opacity="0.12" stroke-width="3" fill="none">
+    <path d="M-20 780 C 300 700, 500 860, 820 780 S 1400 700, 1620 790"/>
+    <path d="M-20 850 C 300 770, 500 930, 820 850 S 1400 770, 1620 860"/>
+    <path d="M-20 920 C 300 840, 500 1000, 820 920 S 1400 840, 1620 930"/>
+  </g>
+  <!-- profile -->
+  <path d="M560 880 C 520 760, 470 700, 470 560 C 470 380, 610 250, 780 250 C 940 250, 1050 350, 1060 500 C 1064 560, 1040 600, 1000 640 C 990 650, 992 662, 1004 668 L 1040 686 C 1052 692, 1054 706, 1044 714 L 1010 736 C 1004 740, 1003 746, 1008 752 L 1024 780 C 1030 790, 1024 802, 1012 804 L 976 810 C 966 812, 960 820, 962 830 L 970 878 C 972 892, 962 904, 948 904 L 720 904 C 700 904, 690 890, 692 872 C 700 800, 720 760, 690 720 C 660 680, 600 720, 580 780 C 572 810, 570 850, 560 880 Z" fill="url(#head)" opacity="0.96"/>
+  <!-- leaves growing from the mind -->
+  <g fill="url(#leaf)">
+    <path d="M760 330 C 720 250, 640 220, 560 240 C 600 320, 680 360, 760 330 Z"/>
+    <path d="M790 300 C 800 200, 860 140, 950 130 C 940 230, 880 300, 790 300 Z"/>
+    <path d="M830 360 C 900 300, 990 300, 1050 350 C 980 400, 890 410, 830 360 Z"/>
+    <path d="M700 420 C 630 380, 560 400, 520 460 C 600 490, 670 470, 700 420 Z"/>
+  </g>
+  <path d="M700 430 C 740 380, 780 330, 790 300 M 790 300 C 800 360, 820 400, 830 360 M 760 330 C 770 380, 740 420, 700 420" stroke="#ffffff" stroke-opacity="0.7" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- heart -->
+  <path d="M810 590 C 780 560, 730 580, 740 620 C 748 652, 790 680, 810 700 C 830 680, 872 652, 880 620 C 890 580, 840 560, 810 590 Z" fill="#ffffff" opacity="0.95"/>
+  <g fill="#0b6fc2" opacity="0.18"><circle cx="230" cy="260" r="16"/><circle cx="300" cy="160" r="9"/><circle cx="1400" cy="640" r="14"/><circle cx="1480" cy="540" r="8"/><circle cx="160" cy="620" r="11"/></g>
+</svg>

@@ -93,7 +93,10 @@ export default function EmergencyPage() {
                 ))}
               </ol>
             </div>
-            <ButtonLink href="/services/accident-and-emergency" variant="outline">About our A&amp;E department</ButtonLink>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/services/ambulance-services" variant="outline">Ambulance services</ButtonLink>
+              <ButtonLink href="/services/accident-and-emergency" variant="outline">About our A&amp;E department</ButtonLink>
+            </div>
           </div>
         </div>
       </Section>

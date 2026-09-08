@@ -9,19 +9,37 @@ export const timeline: Milestone[] = [
     period: "1963",
     title: "Founded as Thika Maternity Hospital",
     description:
-      "Established through the generosity of Catholic missionaries and international donors as a maternity hospital serving mothers and newborns in Thika, in the first years of Kenya's independence.",
+      "Established by the Holy Rosary Sisters from Ireland in the first years of Kenya's independence, to serve farm labourers and families across central Kenya who had little access to medical care. Demand from expectant mothers soon led to a maternity wing and wards.",
   },
   {
-    period: "1960s – 2000s",
-    title: "A mission hospital for the whole community",
+    period: "1960s – 1980s",
+    title: "A school of enrolled midwives",
     description:
-      "Under the Archdiocese of Nairobi and the management of the Salesian Missionaries of Mary Immaculate, the hospital grew from a maternity centre into a general mission hospital with outpatient, inpatient, laboratory and radiology services.",
+      "The Sisters opened a nursing school that graduated enrolled midwives every year, helping to reduce maternal and newborn deaths across the region. Some of today's staff trained there, and the hospital intends to revive nursing education.",
   },
   {
-    period: "2015",
-    title: "A new chapter of growth begins",
+    period: "1994",
+    title: "A fully-fledged general hospital",
     description:
-      "From a single cramped outpatient room and weather-beaten buildings, the hospital began a decade of transformation driven by faith, the community and a clear strategic plan.",
+      "The Irish Sisters handed the hospital to the Archdiocese of Nairobi. Managed by the Daughters of Divine Love, it was upgraded to a general hospital with 62 beds, and in 1998 it took its present name, Mary Help of the Sick Mission Hospital.",
+  },
+  {
+    period: "25 March 2011",
+    title: "The SMMI Sisters take charge",
+    description:
+      "The Archdiocese invited the Salesian Missionaries of Mary Immaculate from India to manage the hospital. The agreement was signed after an inaugural Mass concelebrated by Bishop David Kamau.",
+  },
+  {
+    period: "2016 – 2017",
+    title: "A new chapter of growth",
+    description:
+      "A new outpatient department brought consultation, ultrasound, X-ray and dental services under one roof, and a revised strategy set the hospital on a decade of expansion.",
+  },
+  {
+    period: "2018 – 2020",
+    title: "New departments and a renewed inpatient wing",
+    description:
+      "Physiotherapy and optical services opened, followed by the first male ward and endoscopy. In 2020 the inpatient department was transformed with a modern kitchen, renovated postnatal, newborn, labour and paediatric wards and a new theatre.",
   },
   {
     period: "2022",
@@ -33,7 +51,7 @@ export const timeline: Milestone[] = [
     period: "2023",
     title: "Laparoscopic surgery introduced",
     description:
-      "Keyhole surgery brought faster recovery to patients, alongside a revamped inpatient wing with private rooms, a high dependency unit, optical services and physiotherapy.",
+      "Keyhole surgery brought faster recovery to patients, alongside private rooms, a high dependency unit and expanded rehabilitation services.",
   },
   {
     period: "March 2025",
@@ -63,7 +81,7 @@ export const values = [
   {
     letter: "I",
     name: "Integrity",
-    description: "We are honest, impartial and trustworthy, from patient confidentiality to transparent billing.",
+    description: "We are honest, impartial and trustworthy, from patient confidentiality to transparent billing, across every ethnicity and faith.",
   },
   {
     letter: "L",

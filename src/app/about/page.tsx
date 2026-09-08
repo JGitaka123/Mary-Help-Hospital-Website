@@ -121,7 +121,7 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="overflow-hidden rounded-3xl shadow-lift">
-            <Image src="/images/community-outreach.jpg" alt="Hospital staff with members of the community during an outreach visit" width={1280} height={720} sizes="(min-width:1024px) 50vw, 100vw" className="aspect-[16/10] w-full object-cover" />
+            <Image src="/images/staff-at-grotto.jpg" alt="Sisters, nurses and staff gathered at the Marian grotto in the hospital grounds" width={1800} height={1161} sizes="(min-width:1024px) 50vw, 100vw" className="aspect-[16/10] w-full object-cover" />
           </div>
           <div>
             <SectionHeader eyebrow="Community" title="Rooted in Thika, reaching beyond" lead="From blood drives and health education to outreach in surrounding communities and our satellite health centre at St Cyril Mukuyu-ini in Gatundu North, our care extends far beyond our gates." />

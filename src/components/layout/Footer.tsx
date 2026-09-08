@@ -1,15 +1,8 @@
 import Link from "next/link";
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { footerLinks, site } from "@/content/site";
 import { Logo } from "./Logo";
-
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">
-      <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3Z" />
-    </svg>
-  );
-}
+import { SocialLinks } from "@/components/ui/SocialLinks";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -58,14 +51,7 @@ export function Footer() {
               <span>Emergency, outpatient, maternity, laboratory, imaging and pharmacy: 24 hours</span>
             </li>
           </ul>
-          <div className="mt-6 flex gap-3">
-            <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook page" className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 transition hover:bg-blue-bright">
-              <FacebookIcon className="h-5 w-5" />
-            </a>
-            <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10 transition hover:bg-blue-bright">
-              <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            </a>
-          </div>
+          <SocialLinks tone="light" className="mt-6" />
         </div>
 
         <FooterColumn title="Hospital" links={footerLinks.hospital} />

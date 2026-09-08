@@ -50,7 +50,7 @@ export const site = {
     specialistClinics: "Monday to Friday, 8:00 am – 5:00 pm (by clinic schedule)",
     visiting: [
       { label: "Afternoon", time: "12:30 pm – 2:00 pm" },
-      { label: "Evening", time: "4:30 pm – 6:30 pm" },
+      { label: "Evening", time: "4:30 pm – 6:00 pm" },
     ],
     administration: "Monday to Friday, 8:00 am – 5:00 pm",
   },
@@ -68,6 +68,9 @@ export const site = {
 
   social: {
     facebook: "https://www.facebook.com/Maryhelpofthesick",
+    x: "https://x.com/maryhelpmission",
+    instagram: "https://www.instagram.com/maryhelpmissionhospital/",
+    youtube: "https://www.youtube.com/@MARYHELPOFTHESICKMISSIONHOSPIT",
   },
 
   branch: {
@@ -78,7 +81,7 @@ export const site = {
   organisation: {
     archdiocese: "Archdiocese of Nairobi",
     congregation: "Salesian Missionaries of Mary Immaculate (SMMI)",
-    ceo: "Sr Packium Lourdu",
+    ceo: "Sr. Packiam Lourdu",
     cmo: "Dr Jesse Gitaka",
   },
 } as const;
@@ -103,7 +106,9 @@ export const navigation = [
       { label: "All services", href: "/services", description: "Our full clinical portfolio" },
       { label: "Emergency & outpatient", href: "/services/accident-and-emergency", description: "24/7 care when you need it" },
       { label: "Maternity & newborn", href: "/maternity", description: "Mother and Child Centre" },
-      { label: "Surgery & theatre", href: "/services/surgery-and-theatre", description: "Including laparoscopic surgery" },
+      { label: "Surgery & theatre", href: "/services/surgery-and-theatre", description: "Two modern operating theatres" },
+      { label: "Laparoscopic surgery", href: "/services/laparoscopic-surgery", description: "Keyhole surgery, faster recovery" },
+      { label: "Ambulance services", href: "/services/ambulance-services", description: "Advanced life support, 24 hours" },
       { label: "Renal & dialysis", href: "/services/renal-unit-and-dialysis", description: "Kidney care close to home" },
       { label: "Specialist clinics", href: "/specialist-clinics", description: "Consultant clinic directory" },
     ],
@@ -135,6 +140,7 @@ export const footerLinks = {
   care: [
     { label: "All services", href: "/services" },
     { label: "Accident & emergency", href: "/services/accident-and-emergency" },
+    { label: "Ambulance services", href: "/services/ambulance-services" },
     { label: "Maternity & newborn", href: "/maternity" },
     { label: "Specialist clinics", href: "/specialist-clinics" },
     { label: "Renal & dialysis", href: "/services/renal-unit-and-dialysis" },

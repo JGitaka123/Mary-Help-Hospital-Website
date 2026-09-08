@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { QuickActions } from "@/components/sections/QuickActions";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { MaternityFeature } from "@/components/sections/MaternityFeature";
 import { WhyMaryHelp } from "@/components/sections/WhyMaryHelp";
 import { Stats } from "@/components/sections/Stats";
 import { ClinicSchedule } from "@/components/sections/ClinicSchedule";
@@ -25,7 +24,6 @@ export default function HomePage() {
       <Hero />
       <QuickActions />
       <ServicesGrid />
-      <MaternityFeature />
       <WhyMaryHelp />
       <Stats />
       <ClinicSchedule />

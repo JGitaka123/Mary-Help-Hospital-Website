@@ -51,7 +51,7 @@ export const faqs: Faq[] = [
     category: "Visiting",
     question: "What are the visiting hours?",
     answer:
-      "Visiting hours are 12:30 pm to 2:00 pm and 4:30 pm to 6:30 pm daily. For the comfort and safety of patients we ask for a maximum of two visitors at a time, and no visitors under 12 years unless arranged with the nurse in charge.",
+      "Visiting hours are 12:30 pm to 2:00 pm and 4:30 pm to 6:00 pm daily. For the comfort and safety of patients we ask for a maximum of two visitors at a time, and no visitors under 12 years unless arranged with the nurse in charge.",
   },
   {
     category: "Visiting",

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowRight, CalendarCheck, Check, Clock, DoorOpen, Phone } from "lucide-react";
@@ -59,6 +58,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           {site.phones.main.display}
         </ButtonAnchor>
       </PageHero>
+      {service.imageCredit && <p className="container-x py-2 text-right text-[0.7rem] text-muted">{service.imageCredit}</p>}
 
       <div className="container-x grid gap-12 py-16 lg:grid-cols-[1.6fr_1fr] sm:py-24">
         <article className="prose-hospital">
@@ -81,19 +81,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           <h2>How to access this service</h2>
           <p>{service.access}</p>
 
-          {service.image && (
-            <figure className="mt-10 overflow-hidden rounded-3xl shadow-soft">
-              <Image
-                src={service.image}
-                alt={service.imageAlt ?? ""}
-                width={1600}
-                height={1067}
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                className="aspect-[3/2] w-full object-cover"
-              />
-              {service.imageAlt && <figcaption className="bg-surface-alt px-5 py-3 text-sm text-muted">{service.imageAlt}</figcaption>}
-            </figure>
-          )}
         </article>
 
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">

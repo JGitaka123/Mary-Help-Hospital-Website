@@ -48,7 +48,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<Para
         <div className="mx-auto max-w-3xl">
           {a.image && (
             <figure className="mb-10 overflow-hidden rounded-3xl shadow-soft">
-              <Image src={a.image} alt={a.imageAlt ?? ""} width={1600} height={1067} sizes="(min-width:1024px) 48rem, 100vw" className={a.poster ? "w-full object-contain" : "aspect-[3/2] w-full object-cover"} priority />
+              <Image src={a.image} alt={a.imageAlt ?? ""} width={1600} height={1067} sizes="(min-width:1024px) 48rem, 100vw" unoptimized={a.image.endsWith(".svg")} className={a.poster && !a.image.endsWith(".svg") ? "w-full object-contain" : "aspect-[3/2] w-full object-cover"} priority />
               {a.imageAlt && <figcaption className="bg-surface-alt px-5 py-3 text-sm text-muted">{a.imageAlt}</figcaption>}
             </figure>
           )}

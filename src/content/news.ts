@@ -77,8 +77,9 @@ export const news: NewsArticle[] = [
   },
   {
     slug: "speech-therapy-unit-opens",
-    image: "/images/community-children.jpg",
-    imageAlt: "Children and families at a hospital community event",
+    image: "/images/news-placeholder.svg",
+    imageAlt: "",
+    poster: true,
     title: "New Speech Therapy Unit gives voice to children and stroke survivors",
     date: "2025-03-25",
     category: "Services",
@@ -92,8 +93,9 @@ export const news: NewsArticle[] = [
   },
   {
     slug: "research-unit-expansion",
-    image: "/images/laboratory-equipment.jpg",
-    imageAlt: "Analysers in the hospital laboratory",
+    image: "/images/news-placeholder.svg",
+    imageAlt: "",
+    poster: true,
     title: "Expanded Research Unit to turn local data into better care",
     date: "2025-03-25",
     category: "Research",

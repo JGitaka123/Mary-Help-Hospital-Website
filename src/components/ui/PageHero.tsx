@@ -33,7 +33,7 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, imageAlt, childr
 
   return (
     <header className="relative isolate overflow-hidden bg-navy text-white">
-      <Image src={image} alt={imageAlt ?? ""} fill priority sizes="100vw" className="object-cover object-center" />
+      <Image src={image} alt={imageAlt ?? ""} fill priority unoptimized={image.endsWith(".svg")} sizes="100vw" className="object-cover object-center" />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/30" aria-hidden="true" />
       <div className="absolute inset-x-0 bottom-0 h-1 bg-terracotta" aria-hidden="true" />
       <div className={cn("container-x relative", compact ? "py-12 sm:py-16" : "py-16 sm:py-24")}>

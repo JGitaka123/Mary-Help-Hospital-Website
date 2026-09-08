@@ -38,6 +38,8 @@ export interface Service {
   featured?: boolean;
   image?: string;
   imageAlt?: string;
+  /** Shown under the image when a third-party photo is used. */
+  imageCredit?: string;
   overview: string[];
   offerings: string[];
   access: string;
@@ -105,6 +107,30 @@ export const services: Service[] = [
     access: "Walk in or book ahead by phone. Bring your identification, SHA or insurance card and any previous medical records.",
     hours: "24 hours, 7 days a week",
     related: ["accident-and-emergency", "specialist-clinics", "laboratory"],
+  },
+  {
+    slug: "ambulance-services",
+    name: "Ambulance Services",
+    group: "Emergency & Outpatient",
+    icon: "siren",
+    image: "/images/ambulance-als.jpg",
+    imageAlt: "The hospital's advanced life support ambulance parked in the hospital grounds",
+    summary: "A 24-hour advanced life support ambulance for emergency pick-up, inter-facility transfer and safe referral, staffed by trained emergency crew.",
+    overview: [
+      "Our ambulance service brings the emergency department to the patient. The advanced life support ambulance carries oxygen, monitoring and resuscitation equipment, and is crewed by trained emergency staff who begin care on the way to the hospital.",
+      "The service also transfers patients between facilities, including referrals for intensive care and specialist treatment, with a nurse or doctor escort where needed.",
+    ],
+    offerings: [
+      "Emergency pick-up from home, workplace or the roadside",
+      "Advanced life support equipment: oxygen, suction, monitoring and resuscitation",
+      "Maternity emergencies and transfer of mothers in labour",
+      "Inter-hospital transfer and escorted referral for intensive care",
+      "Transfer of newborns to and from the newborn unit",
+      "Standby cover for events on request",
+    ],
+    access: "Call the emergency line and give the patient's condition and your exact location. The crew will guide you on what to do while the ambulance is on its way.",
+    hours: "24 hours, 7 days a week",
+    related: ["accident-and-emergency", "high-dependency-unit", "maternity"],
   },
   {
     slug: "maternity",
@@ -251,7 +277,32 @@ export const services: Service[] = [
     ],
     access: "Elective surgery is booked after review in the surgical or specialist clinic. Emergency surgery is available at all times through Accident & Emergency.",
     hours: "Elective lists on weekdays; emergency theatre 24/7",
-    related: ["accident-and-emergency", "high-dependency-unit", "specialist-clinics"],
+    related: ["laparoscopic-surgery", "high-dependency-unit", "specialist-clinics"],
+  },
+  {
+    slug: "laparoscopic-surgery",
+    name: "Laparoscopic (Keyhole) Surgery",
+    shortName: "Laparoscopic Surgery",
+    group: "Inpatient & Surgery",
+    icon: "scissors",
+    image: "/images/theatre-2.jpg",
+    imageAlt: "Equipment inside one of the operating theatres",
+    summary: "Minimally invasive surgery through small incisions since 2023: less pain, smaller scars, shorter hospital stays and a faster return to daily life.",
+    overview: [
+      "Laparoscopic surgery uses a camera and fine instruments passed through incisions of about a centimetre, instead of one large cut. For many gynaecological and general surgical conditions this means less pain, lower risk of wound infection, a shorter stay in hospital and a quicker recovery.",
+      "Mary Help introduced laparoscopy in 2023 in its modern operating theatres, performed by our surgical team and visiting consultant surgeons with anaesthesia and high dependency support on site.",
+    ],
+    offerings: [
+      "Diagnostic laparoscopy for pelvic and abdominal pain and infertility assessment",
+      "Ovarian cysts, endometriosis and ectopic pregnancy",
+      "Laparoscopic hysterectomy and myomectomy for selected patients",
+      "Laparoscopic cholecystectomy (gallbladder removal)",
+      "Laparoscopic appendicectomy",
+      "Hernia repair for selected patients",
+    ],
+    access: "Assessment in the gynaecology or surgical clinic decides whether keyhole surgery is suitable for you. Elective procedures are booked after review, and pre-authorisation is arranged with your insurer or SHA.",
+    hours: "Elective lists on scheduled theatre days",
+    related: ["surgery-and-theatre", "maternity", "high-dependency-unit"],
   },
   {
     slug: "high-dependency-unit",
@@ -284,8 +335,9 @@ export const services: Service[] = [
     group: "Renal & Specialty Care",
     icon: "droplets",
     featured: true,
-    image: "/images/renal-unit.jpg",
-    imageAlt: "The Renal Unit building at Mary Help of the Sick Mission Hospital",
+    image: "/images/dialysis-unit.jpg",
+    imageAlt: "A haemodialysis machine beside a treatment chair in a dialysis unit",
+    imageCredit: "Illustrative image: Виталий Поспелов, CC BY-SA 3.0, via Wikimedia Commons",
     summary: "Haemodialysis and renal clinic care close to home since 2022, so patients no longer travel to Nairobi for treatment.",
     overview: [
       "Our renal unit became operational in 2022 to serve the growing number of people in Thika and surrounding counties living with kidney disease. Patients receive regular haemodialysis sessions and renal clinic follow-up without the exhausting journey to Nairobi.",
@@ -518,6 +570,8 @@ export const services: Service[] = [
   },
   {
     slug: "mental-health-and-counselling",
+    image: "/images/mental-health-illustration.svg",
+    imageAlt: "Illustration of a calm mind: a profile with leaves growing from it under a warm sun",
     name: "Mental Health & Counselling",
     shortName: "Mental Health",
     group: "Rehabilitation & Wellbeing",
@@ -539,8 +593,8 @@ export const services: Service[] = [
   },
   {
     slug: "chaplaincy",
-    image: "/images/grotto-wide.jpg",
-    imageAlt: "The Marian grotto in the hospital grounds under a blue sky",
+    image: "/images/chapel.jpg",
+    imageAlt: "The hospital chapel decorated for Christmas, with the nativity scene and one of the Sisters",
     name: "Chaplaincy & Pastoral Care",
     group: "Rehabilitation & Wellbeing",
     icon: "heart-pulse",

@@ -71,11 +71,10 @@ Global elements: emergency top bar, header with primary navigation and "Book app
 ## 4. Page-by-page content specification
 
 ### 4.1 Home
-1. **Emergency bar** — "Emergency 24/7" with tel link; mobile shows a sticky call button.
-2. **Hero** — headline "Compassionate care for body, mind and spirit", sub-copy about 60+ years serving Thika, two CTAs (Book appointment, Our services), real photo of the Accident & Emergency entrance, trust chips (24/7 emergency, KEPH Level 4, SHA accredited, since 1960s).
+1. **Utility bar** — main phone, email, emergency number and social media icons (Facebook, X, Instagram, YouTube, WhatsApp); mobile shows a sticky call button.
+2. **Hero carousel** — five full-bleed photographic slides (A&E entrance, Mother and Child Centre opening, ambulance, theatre, campus) each with an eyebrow, headline, text and call to action; auto-advances every 7 s, pauses on hover, has previous/next, dot navigation, a pause button, keyboard support and respects reduced-motion.
 3. **Quick actions** — Emergency, Book appointment, Find a service, Maternity, Insurance & SHA, Visiting hours.
 4. **Services overview** — 8 featured services with icons and links, plus "View all services".
-5. **Maternity feature** — Mother and Child Centre (opened 2025), antenatal, delivery, newborn unit, MCH clinic; CTA to /maternity.
 6. **Why Mary Help** — four pillars: Faith-rooted compassion, Affordable, Experienced specialists, Growing platform (theatres, renal unit, laparoscopy, HDU).
 7. **At a glance** — figures that are safe to publish: 60+ years, 24/7 emergency, 2 operating theatres, 20+ specialist consultants, 100+ outpatients daily.
 8. **Specialist clinic schedule** — compact weekly view with link to full directory.
@@ -87,7 +86,7 @@ Global elements: emergency top bar, header with primary navigation and "Book app
 History timeline (1960s founding as Thika Maternity Hospital → SMMI management → 2022 theatres and renal unit → 2023 laparoscopy → 2025 60th anniversary and Mother and Child Centre), mission, vision, SMILES values (Service, Mindfulness, Integrity, Leadership & Professionalism, Excellence, Synergy), Catholic identity and chaplaincy, Marian grotto photo, community.
 
 ### 4.3 Leadership & governance
-Ownership (Archdiocese of Nairobi), management (SMMI Sisters), Board of Directors, Hospital Management Team, and a hospital leadership grid with uniform 4:5 portraits: Sr Packium Lourdu (CEO), Dr Jesse Gitaka (CMO), Esther Thea (Head of Nursing), John Murimi (Finance Manager). Names and titles only, no bios.
+Ownership (Archdiocese of Nairobi), management (SMMI Sisters), Board of Directors, Hospital Management Team, and a hospital leadership row of circular portraits with a blue gradient ring: Sr. Packiam Lourdu (CEO), Dr. Jesse Gitaka (CMO), Esther Thea (Head of Nursing), John Murimi (Finance Manager) and Francis Kioko (HR Manager, initials monogram, no photo). Names and titles only, no bios.
 
 ### 4.4 Services
 Grouped into: Emergency & Outpatient · Maternity & Child Health · Inpatient & Surgery · Renal & Specialty Care · Diagnostics & Pharmacy · Rehabilitation & Wellbeing. Each service page: hero, overview, what we offer (bullets), who it is for, how to access (walk-in, appointment, referral), hours, related services, CTA.
