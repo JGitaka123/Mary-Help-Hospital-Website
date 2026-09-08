@@ -4,9 +4,9 @@ Items below were taken from the best available source but should be confirmed by
 
 | # | Item | Current value on site | Source | Edit in |
 |---|---|---|---|---|
-| 1 | Main telephone line | +254 20 800 8257 | 2016 brochure | `src/content/site.ts` |
-| 2 | Mobile / WhatsApp line | +254 724 936 177 | 2016 brochure | `src/content/site.ts` |
-| 3 | Emergency line | Same as mobile line (no separate A&E number found) | — | `src/content/site.ts` |
+| 1 | Main telephone line | +254 724 936 177 | Confirmed by hospital, 8 Sept 2026 | `src/content/site.ts` |
+| 2 | Second line | +254 757 034 253 | Confirmed by hospital, 8 Sept 2026 | `src/content/site.ts` |
+| 3 | Emergency line | +254 724 936 177 (same as main line) | Confirmed by hospital, 8 Sept 2026 | `src/content/site.ts` |
 | 4 | Email | info@maryhelphospital.org | Brochure | `src/content/site.ts` |
 | 5 | Postal address | P.O. Box 792-01000, Thika | Brochure, KMHFR | `src/content/site.ts` |
 | 6 | Directions | Kimathi Estate, off Kenyatta Highway, opposite Munene Industries, near St Andrew's ACK Cathedral | Brochure | `src/content/site.ts` |

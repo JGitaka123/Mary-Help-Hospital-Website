@@ -36,11 +36,12 @@ export default function ContactPage() {
             <Phone className="h-6 w-6 text-blue" aria-hidden="true" />
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted">Main line</p>
             <p className="mt-1 font-display text-2xl text-navy">{site.phones.main.display}</p>
+            <p className="mt-1 text-sm text-muted">or {site.phones.mobile.display}</p>
           </a>
           <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="card-hover rounded-2xl border border-line bg-white p-6 shadow-soft">
             <MessageCircle className="h-6 w-6 text-green" aria-hidden="true" />
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted">WhatsApp</p>
-            <p className="mt-1 font-display text-2xl text-navy">{site.phones.mobile.display}</p>
+            <p className="mt-1 font-display text-2xl text-navy">{site.phones.main.display}</p>
           </a>
           <a href={`mailto:${site.email}`} className="card-hover rounded-2xl border border-line bg-white p-6 shadow-soft">
             <Mail className="h-6 w-6 text-blue" aria-hidden="true" />

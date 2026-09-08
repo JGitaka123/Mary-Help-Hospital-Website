@@ -18,8 +18,8 @@ export const site = {
 
   phones: {
     emergency: { display: "+254 724 936 177", tel: "+254724936177", label: "Emergency 24/7" },
-    main: { display: "+254 20 800 8257", tel: "+254208008257", label: "Main line" },
-    mobile: { display: "+254 724 936 177", tel: "+254724936177", label: "Mobile / WhatsApp" },
+    main: { display: "+254 724 936 177", tel: "+254724936177", label: "Main line" },
+    mobile: { display: "+254 757 034 253", tel: "+254757034253", label: "Second line" },
   },
   whatsapp: "https://wa.me/254724936177",
   email: "info@maryhelphospital.org",

@@ -42,13 +42,13 @@ export function VisitUs() {
                   <a href={`tel:${site.phones.main.tel}`} className="font-semibold text-navy hover:text-blue">
                     {site.phones.main.display}
                   </a>{" "}
-                  <span className="text-muted">(main line)</span>
+                  <span className="text-muted">(main line / WhatsApp)</span>
                 </p>
                 <p>
                   <a href={`tel:${site.phones.mobile.tel}`} className="font-semibold text-navy hover:text-blue">
                     {site.phones.mobile.display}
                   </a>{" "}
-                  <span className="text-muted">(mobile / WhatsApp)</span>
+                  <span className="text-muted">(second line)</span>
                 </p>
               </div>
             </li>
