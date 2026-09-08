@@ -6,7 +6,7 @@ export interface Milestone {
 
 export const timeline: Milestone[] = [
   {
-    period: "Early 1960s",
+    period: "1963",
     title: "Founded as Thika Maternity Hospital",
     description:
       "Established through the generosity of Catholic missionaries and international donors as a maternity hospital serving mothers and newborns in Thika, in the first years of Kenya's independence.",

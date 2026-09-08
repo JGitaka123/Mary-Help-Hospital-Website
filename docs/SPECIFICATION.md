@@ -223,7 +223,7 @@ docs/              this specification, content verification checklist
 
 Content is drawn from hospital documents (profile, brochure, admitting-rights policy, 60th-anniversary speech, Board orientation deck, Q1 2025 report, proposals) and public sources (Archdiocese of Nairobi, Kenya Master Health Facility Registry, listings). Rules applied:
 
-- Use **"over six decades"** rather than a single founding year (sources say 1963 and 1965).
+- Founding year **1963** (confirmed by the CMO). Key figures shown on the home page: founded 1963, 35 specialist doctors, 10 specialist clinics, open 24/7.
 - Do **not** claim an operational ICU or comprehensive cancer centre; present them as aspirations. HDU is supported.
 - Do not publish internal performance statistics, patient counts or clinical outcome figures.
 - Do not use insurer logos or claim specific insurer contracts beyond "SHA accredited; major private insurers accepted — confirm at reception".

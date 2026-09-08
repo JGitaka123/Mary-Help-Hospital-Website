@@ -34,7 +34,7 @@ npm run check        # lint + typecheck + build
 
 ## Content rules (important)
 
-- Say "over six decades" of service; do not state a single founding year.
+- Founding year is 1963 (confirmed by the CMO, Sept 2026); "over six decades" is also fine.
 - Do not claim an operational ICU or a comprehensive cancer centre. These are aspirations; HDU is fine.
 - Do not publish internal statistics, patient counts, clinical outcome figures or staff personal numbers.
 - Proposals (College of Nursing and Clinical Medicine, Clinical Research Centre) are "projects in development".

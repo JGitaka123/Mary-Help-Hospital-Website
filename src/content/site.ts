@@ -14,7 +14,7 @@ export const site = {
   level: "KEPH Level 4 Hospital",
   ownership: "Owned by the Archdiocese of Nairobi",
   management: "Managed by the Salesian Missionaries of Mary Immaculate (SMMI) Sisters",
-  foundedText: "Serving Thika for over six decades",
+  foundedText: "Serving Thika since 1963",
 
   phones: {
     emergency: { display: "+254 724 936 177", tel: "+254724936177", label: "Emergency 24/7" },
