@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0f2e48;
+  --color-navy-deep: #0a1f31;
+  --color-blue: #1d5c96;
+  --color-blue-dark: #174b7b;
+  --color-blue-light: #e8f1fa;
+  --color-blue-mist: #f3f7fc;
+  --color-terracotta: #b8432b;
+  --color-terracotta-dark: #96351f;
+  --color-terracotta-light: #fbeae6;
+  --color-gold: #d9a441;
+  --color-gold-light: #fbf1dc;
+  --color-green: #2e7d5b;
+  --color-green-light: #e6f3ec;
+  --color-ink: #16202a;
+  --color-muted: #5b6b7a;
+  --color-line: #dfe6ee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f8fb;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+
+  --shadow-soft: 0 1px 2px rgb(15 46 72 / 0.06), 0 8px 24px -12px rgb(15 46 72 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(15 46 72 / 0.06), 0 20px 40px -20px rgb(15 46 72 / 0.28);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+    font-feature-settings: "cv11", "ss01", "kern";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-navy;
+    text-wrap: balance;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-gold) 45%, white);
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6 bg-gold;
+  }
+
+  .prose-hospital {
+    @apply text-[1.0625rem] leading-relaxed text-ink/90;
+  }
+  .prose-hospital p + p {
+    @apply mt-4;
+  }
+  .prose-hospital h2 {
+    @apply mt-10 mb-3 text-2xl;
+  }
+  .prose-hospital h3 {
+    @apply mt-8 mb-2 text-xl;
+  }
+  .prose-hospital ul {
+    @apply mt-4 space-y-2 pl-5;
+    list-style: disc;
+  }
+  .prose-hospital a {
+    @apply text-blue underline decoration-blue/30 underline-offset-4 hover:decoration-blue;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 30% 20%, black 20%, transparent 70%);
+  }
+
+  .card-hover {
+    @apply transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lift;
+  }
+
+  .reveal {
+    animation: var(--animate-fade-up);
+  }
+  .reveal-delay-1 {
+    animation-delay: 80ms;
+  }
+  .reveal-delay-2 {
+    animation-delay: 160ms;
+  }
+  .reveal-delay-3 {
+    animation-delay: 240ms;
+  }
+}
