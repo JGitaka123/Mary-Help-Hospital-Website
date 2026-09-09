@@ -17,10 +17,11 @@ Items below were taken from the best available source but should be confirmed by
 | 11 | Insurance list | SHA + "major private insurers" | Brochure named Britam, CIC, Africa Medilink, Bliss (2016) | `src/content/site.ts` |
 | 12 | SafeCare accreditation | Not claimed | Brochure (old) | `src/content/site.ts` |
 | 13 | Leadership | Sr. Packiam Lourdu (CEO), Dr. Jesse Gitaka (CMO), Esther Thea (Head of Nursing), John Murimi (Finance Manager), Francis Kioko (HR Manager, no photo by his choice) | Confirmed by CMO, 8 Sept 2026 | `src/content/leadership.ts` |
-| 14 | Social media | Facebook (Maryhelpofthesick), X (@maryhelpmission), Instagram (@maryhelpmissionhospital), YouTube (@MARYHELPOFTHESICKMISSIONHOSPIT). No official TikTok handle found; add it in `site.social` if one exists | Web search, 8 Sept 2026 | `src/content/site.ts` |
-| 15 | Branch: St Cyril Mukuyu-ini, Gatundu North | Mentioned as satellite facility | Public listing (unverified) | `src/content/site.ts` |
+| 14 | Social media | Facebook, X, Instagram, YouTube confirmed. LinkedIn and TikTok URLs are **inferred** from the handle @maryhelpmissionhospital shown on hospital posters — confirm the exact profile URLs | Posters, 9 Sept 2026 | `src/content/site.ts` |
+| 15 | Branch | St Cyril & Methodius Mukuyu-ini Branch, Gatundu North, tel +254 734 680 522 | Wellness camp poster, 9 Sept 2026 | `src/content/site.ts` |
 | 16 | Ambulance availability | "Ambulance available — call ahead" | 2024 strategic plan review | `src/content/services.ts` |
 | 17 | Speech therapy, occupational therapy, mental health services | Listed as offered | Board deck 2026 | `src/content/services.ts` |
 | 18 | Logo | Text wordmark used; no official logo file supplied | — | `src/components/layout/Logo.tsx` |
 | 19 | Renal unit photo | Illustrative dialysis-machine photo (Виталий Поспелов, CC BY-SA 3.0, Wikimedia Commons), credited on the page | Replace with a photo of the hospital's own dialysis unit when available | `src/content/services.ts`, `public/images/dialysis-unit.jpg` |
 | 20 | Mental health image | Bespoke illustration in brand colours | Replace with a suitable photo if preferred | `public/images/mental-health-illustration.svg` |
+| 21 | Clinic days added from posters | Saturday antenatal clinic 8 am–12 pm; paediatric clinic Mon & Fri; dermatology Fri | Hospital posters, 9 Sept 2026 | `src/content/clinics.ts` |

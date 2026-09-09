@@ -11,8 +11,14 @@ const icons = {
   instagram: (
     <path d="M12 2.2c2.7 0 3 0 4 .1 2.7.1 4 1.4 4.1 4.1.1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.7-1.4 4-4.1 4.1-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1-.1-1.3-.1-4s0-3 .1-4C4 3.7 5.3 2.4 8 2.3c1-.1 1.3-.1 4-.1ZM12 0C9.3 0 8.9 0 7.9.1 4.2.2 2.2 2.2 2.1 5.9 2 6.9 2 7.3 2 10s0 3.1.1 4.1c.2 3.7 2.2 5.7 5.9 5.9 1 .1 1.3.1 4.1.1s3.1 0 4.1-.1c3.7-.2 5.7-2.2 5.9-5.9.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1C21.9 2.2 19.9.2 16.2.1 15.1 0 14.7 0 12 0Zm0 4.9a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2Zm0 8.4a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6Zm5.3-9.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z" />
   ),
+  linkedin: (
+    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-4v-5.7c0-1.36-.03-3.1-1.9-3.1-1.9 0-2.2 1.47-2.2 3V21h-4V9Z" />
+  ),
   youtube: (
     <path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 0 0 2.1 2.1c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.8.5-5.4.5-5.4s0-3.6-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z" />
+  ),
+  tiktok: (
+    <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .52.04.76.12v-3.2a5.8 5.8 0 0 0-.76-.05 5.77 5.77 0 1 0 5.77 5.77V9.01a7.35 7.35 0 0 0 4.29 1.38V7.3a4.29 4.29 0 0 1-3.32-1.48Z" />
   ),
   whatsapp: (
     <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8ZM12 0a12 12 0 0 0-10.2 18.3L0 24l5.9-1.5A12 12 0 1 0 12 0Z" />
@@ -21,13 +27,25 @@ const icons = {
 
 const links: { key: keyof typeof icons; label: string; href: string }[] = [
   { key: "facebook", label: "Facebook", href: site.social.facebook },
-  { key: "x", label: "X (Twitter)", href: site.social.x },
   { key: "instagram", label: "Instagram", href: site.social.instagram },
+  { key: "x", label: "X (Twitter)", href: site.social.x },
+  { key: "linkedin", label: "LinkedIn", href: site.social.linkedin },
   { key: "youtube", label: "YouTube", href: site.social.youtube },
+  { key: "tiktok", label: "TikTok", href: site.social.tiktok },
   { key: "whatsapp", label: "WhatsApp", href: site.whatsapp },
 ];
 
-export function SocialLinks({ tone = "dark", size = "md", className }: { tone?: "dark" | "light" | "onblue"; size?: "sm" | "md"; className?: string }) {
+export function SocialLinks({
+  tone = "dark",
+  size = "md",
+  showHandle = false,
+  className,
+}: {
+  tone?: "dark" | "light" | "onblue";
+  size?: "sm" | "md";
+  showHandle?: boolean;
+  className?: string;
+}) {
   const box = size === "sm" ? "h-7 w-7" : "h-10 w-10";
   const icon = size === "sm" ? "h-3.5 w-3.5" : "h-[1.15rem] w-[1.15rem]";
   const tones = {
@@ -36,23 +54,28 @@ export function SocialLinks({ tone = "dark", size = "md", className }: { tone?: 
     onblue: "text-white/85 hover:bg-white/15 hover:text-white",
   };
   return (
-    <ul className={cn("flex items-center gap-1.5", className)} aria-label="Social media">
-      {links.map((l) => (
-        <li key={l.key}>
-          <a
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${l.label} (opens in a new tab)`}
-            title={l.label}
-            className={cn("inline-flex items-center justify-center rounded-md transition", box, tones[tone])}
-          >
-            <svg viewBox="0 0 24 24" className={icon} fill="currentColor" aria-hidden="true">
-              {icons[l.key]}
-            </svg>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div className={cn("flex flex-wrap items-center gap-x-3 gap-y-2", className)}>
+      <ul className="flex items-center gap-1.5" aria-label="Social media">
+        {links.map((l) => (
+          <li key={l.key}>
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${l.label} (opens in a new tab)`}
+              title={l.label}
+              className={cn("inline-flex items-center justify-center rounded-md transition", box, tones[tone])}
+            >
+              <svg viewBox="0 0 24 24" className={icon} fill="currentColor" aria-hidden="true">
+                {icons[l.key]}
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {showHandle && (
+        <span className={cn("text-sm", tone === "light" ? "text-white/75" : "text-muted")}>@{site.socialHandle}</span>
+      )}
+    </div>
   );
 }

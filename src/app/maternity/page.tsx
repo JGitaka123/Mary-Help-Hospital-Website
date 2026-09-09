@@ -25,7 +25,7 @@ const journey = [
   {
     icon: Stethoscope,
     title: "Antenatal care",
-    text: "Book early. Routine visits include blood tests, ultrasound scans, blood pressure checks, nutrition advice and screening for high-risk pregnancy, all in the Mother and Child Centre.",
+    text: "Book early. Routine visits include blood tests, ultrasound scans, blood pressure checks, nutrition advice and screening for high-risk pregnancy. Clinics run on weekdays and every Saturday morning.",
     href: "/services/mother-and-child-centre",
   },
   {
@@ -131,7 +131,7 @@ export default function MaternityPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
           <div>
             <p className="eyebrow">Mother and Child Centre</p>
-            <h2 className="mt-3 text-3xl sm:text-4xl">Opened for our 60th anniversary</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl">Every service a mother and child need, in one wing</h2>
             <p className="mt-4 text-lg text-muted">
               On 25 March 2025 His Grace Archbishop Philip Anyolo opened the Mother and Child Centre, bringing antenatal, postnatal, immunisation, growth monitoring and nutrition services together in one purpose-built wing, with a promise that no mother will face pregnancy alone.
             </p>

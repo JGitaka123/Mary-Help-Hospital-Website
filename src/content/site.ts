@@ -70,12 +70,16 @@ export const site = {
     facebook: "https://www.facebook.com/Maryhelpofthesick",
     x: "https://x.com/maryhelpmission",
     instagram: "https://www.instagram.com/maryhelpmissionhospital/",
+    linkedin: "https://www.linkedin.com/company/maryhelpmissionhospital/",
     youtube: "https://www.youtube.com/@MARYHELPOFTHESICKMISSIONHOSPIT",
+    tiktok: "https://www.tiktok.com/@maryhelpmissionhospital",
   },
+  socialHandle: "maryhelpmissionhospital",
 
   branch: {
-    name: "St Cyril Mukuyu-ini Health Centre",
+    name: "St Cyril & Methodius Mukuyu-ini Branch",
     location: "Gatundu North, Kiambu County",
+    phone: { display: "+254 734 680 522", tel: "+254734680522" },
   },
 
   organisation: {

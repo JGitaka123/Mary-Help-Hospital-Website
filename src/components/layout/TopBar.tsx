@@ -25,7 +25,7 @@ export function TopBar() {
             <span className="inline-block h-2 w-2 rounded-full bg-terracotta ring-2 ring-white/60" aria-hidden="true" />
             Emergency: {site.phones.emergency.display}
           </a>
-          <SocialLinks tone="onblue" size="sm" className="hidden md:flex" />
+          <SocialLinks tone="onblue" size="sm" className="hidden xl:flex" />
         </div>
       </div>
     </div>

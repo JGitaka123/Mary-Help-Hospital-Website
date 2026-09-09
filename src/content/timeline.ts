@@ -55,9 +55,9 @@ export const timeline: Milestone[] = [
   },
   {
     period: "March 2025",
-    title: "60th anniversary and the Mother and Child Centre",
+    title: "The Mother and Child Centre opens",
     description:
-      "Archbishop Philip Anyolo opened the Mother and Child Centre, a Speech Therapy Unit and an expanded Research Unit as the hospital celebrated six decades of service.",
+      "Archbishop Philip Anyolo opened the Mother and Child Centre and a Speech Therapy Unit, bringing antenatal, postnatal, immunisation and child health services together in one purpose-built wing.",
   },
   {
     period: "Today and beyond",

@@ -43,7 +43,7 @@ export function NewsCard({ article }: { article: NewsArticle }) {
 
 export function NewsList() {
   const [featured, ...rest] = sortedNews;
-  const list = rest.slice(0, 4);
+  const list = rest.slice(0, 5);
   return (
     <Section tone="alt">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -55,10 +55,10 @@ export function NewsList() {
       </div>
       <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <NewsCard article={featured} />
-        <ul className="divide-y divide-line rounded-lg border border-line bg-white shadow-soft">
+        <ul className="flex h-full flex-col divide-y divide-line rounded-lg border border-line bg-white shadow-soft">
           {list.map((a) => (
-            <li key={a.slug}>
-              <Link href={`/news/${a.slug}`} className="group flex gap-4 p-4 transition hover:bg-blue-mist">
+            <li key={a.slug} className="flex-1">
+              <Link href={`/news/${a.slug}`} className="group flex h-full items-center gap-4 p-4 transition hover:bg-blue-mist">
                 {a.image && (
                   <span className="relative hidden h-20 w-24 shrink-0 overflow-hidden rounded-md bg-blue-light sm:block">
                     <Image src={a.image} alt="" fill unoptimized={a.image.endsWith(".svg")} sizes="96px" className={a.poster && !a.image.endsWith(".svg") ? "object-contain p-1" : "object-cover"} />

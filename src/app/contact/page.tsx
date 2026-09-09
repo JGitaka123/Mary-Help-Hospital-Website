@@ -92,7 +92,10 @@ export default function ContactPage() {
             <div className="rounded-3xl border border-line bg-white p-6 text-sm text-muted shadow-soft">
               <p className="font-semibold text-navy">Getting here</p>
               <p className="mt-2">From Thika town, take Kenyatta Highway towards Kimathi Estate. The hospital is opposite Munene Industries, near St Andrew&rsquo;s ACK Cathedral, about 1 km from the town centre. Matatus and boda-bodas from Thika town stop at the hospital gate.</p>
-              <p className="mt-2">Satellite facility: {site.branch.name}, {site.branch.location}.</p>
+              <p className="mt-2">
+                Satellite facility: {site.branch.name}, {site.branch.location}.{" "}
+                <a href={`tel:${site.branch.phone.tel}`} className="font-semibold text-navy hover:text-blue">{site.branch.phone.display}</a>
+              </p>
             </div>
           </aside>
         </div>

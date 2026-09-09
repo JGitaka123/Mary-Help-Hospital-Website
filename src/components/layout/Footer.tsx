@@ -51,7 +51,7 @@ export function Footer() {
               <span>Emergency, outpatient, maternity, laboratory, imaging and pharmacy: 24 hours</span>
             </li>
           </ul>
-          <SocialLinks tone="light" className="mt-6" />
+          <SocialLinks tone="light" showHandle className="mt-6" />
         </div>
 
         <FooterColumn title="Hospital" links={footerLinks.hospital} />

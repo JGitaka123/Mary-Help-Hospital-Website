@@ -50,6 +50,28 @@ export default function LeadershipPage() {
         </ul>
       </Section>
 
+      <Section tone="blue-mist">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div className="overflow-hidden rounded-lg shadow-lift">
+            <Image
+              src="/images/smmi-sisters.jpg"
+              alt="Sisters of the Salesian Missionaries of Mary Immaculate at the Sacred Heart fountain in the hospital grounds"
+              width={1040}
+              height={585}
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="w-full object-cover"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Our Sisters</p>
+            <h2 className="heading-rule mt-2 text-[1.75rem] leading-tight sm:text-3xl">The Sisters who care for this hospital</h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink/85">
+              The Salesian Missionaries of Mary Immaculate came from India at the invitation of the Archdiocese of Nairobi in 2011. Since then the Sisters have led the hospital day by day, on the wards and at the bedside, holding together its clinical work and its spirit of prayer and service.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       <Section tone="alt">
         <SectionHeader eyebrow="Hospital leadership" title="The team leading Mary Help" lead="Our senior leaders are responsible for the day-to-day running of the hospital and for delivering its mission of compassionate, affordable care." />
         <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">

@@ -190,9 +190,9 @@ export const services: Service[] = [
     icon: "baby",
     image: "/images/mother-child-centre-opening.jpg",
     imageAlt: "Archbishop Philip Anyolo cutting the ribbon at the opening of the Mother and Child Centre",
-    summary: "Opened at our 60th anniversary in 2025: antenatal, postnatal, immunisation, growth monitoring and nutrition services for mothers and children in one wing.",
+    summary: "Antenatal, postnatal, immunisation, growth monitoring and nutrition services for mothers and children, brought together in one purpose-built wing.",
     overview: [
-      "The Mother and Child Centre was officially opened by His Grace Archbishop Philip Anyolo on 25 March 2025 as part of the hospital's 60th anniversary celebrations. It brings together the services a mother and her child need from early pregnancy through the first years of life.",
+      "The Mother and Child Centre was officially opened by His Grace Archbishop Philip Anyolo on 25 March 2025. It brings together the services a mother and her child need from early pregnancy through the first years of life, including a Saturday antenatal clinic for mothers who work or study during the week.",
       "The centre is designed so that no mother faces pregnancy alone: prenatal check-ups, nutritional guidance, immunisations, growth monitoring and tender care for every child.",
     ],
     offerings: [
@@ -372,6 +372,7 @@ export const services: Service[] = [
       "Internal medicine (physician clinic)",
       "Ear, nose and throat",
       "Ophthalmology",
+      "Dermatology",
       "Plastic surgery and neurosurgery",
       "Renal clinic",
     ],
