@@ -52,6 +52,34 @@ config.sample.php                     template — real values created on server
   The `.htaccess` redirects everything to HTTPS, so without a certificate
   covering both names the site will fail to load.
 
+## Two ways to deploy
+
+**A. GitHub Actions (recommended).** `.github/workflows/deploy-cpanel.yml`
+builds and uploads over FTPS. Run it from the *Actions* tab → *Deploy to
+cPanel* → *Run workflow*. It is manual-only on purpose: a hospital site should
+not redeploy as a side effect of a push.
+
+It needs three repository secrets (*Settings* → *Secrets and variables* →
+*Actions*):
+
+| Secret | Value |
+|---|---|
+| `CPANEL_FTP_HOST` | the FTP host, e.g. `ftp.maryhelphospital.org` |
+| `CPANEL_FTP_USER` | the cPanel account username |
+| `CPANEL_FTP_PASSWORD` | that account's password |
+
+Run it once with **dry run** ticked first: it lists exactly what would change
+without writing anything. The workflow refuses to start if a secret is missing,
+never uploads `config.php` (even with *delete stale* on), leaves `cgi-bin/` and
+`.well-known/` alone, and finishes by checking that four live URLs return 200.
+
+If FTPS fails on a certificate mismatch — common on shared hosting where the
+cert covers the server's own hostname rather than yours — re-run with
+*insecure TLS* ticked, or set `CPANEL_FTP_HOST` to the hostname the certificate
+actually covers.
+
+**B. By hand**, via cPanel File Manager. Steps 1–5 below.
+
 ## Step 1 — Build
 
 ```bash
