@@ -40,17 +40,26 @@ sitemap.xml, robots.txt, 404.html     metadata
 .htaccess                             rewrites, security headers, caching
 contact-handler.php                   contact form endpoint
 config.sample.php                     template — real values created on server
+deploy-check.php                      one-page install check; delete after use
 ```
 
 ## Prerequisites on the host
 
-- PHP **8.1 or newer** (cPanel → *MultiPHP Manager*). The handler uses typed
-  properties and the `never` return type.
-- The PHP **pdo_mysql** extension (cPanel → *Select PHP Extensions*).
-- An SSL certificate for both `maryhelphospital.org` and
+- PHP **7.4 or newer** (cPanel → *MultiPHP Manager*). Stock cPanel accounts
+  already meet this; the handler deliberately avoids PHP 8 syntax so no
+  version change is needed.
+- The **pdo_mysql** extension (cPanel → *Select PHP Extensions*). Usually on by
+  default. Without it the contact form still emails, it just does not store
+  enquiries.
+- An SSL certificate covering **both** `maryhelphospital.org` and
   `www.maryhelphospital.org` (cPanel → *SSL/TLS Status* → *Run AutoSSL*).
-  The `.htaccess` redirects everything to HTTPS, so without a certificate
-  covering both names the site will fail to load.
+  The `.htaccess` redirects everything to `https://www.`, so a certificate
+  covering only one name will take the site down rather than degrade it.
+  This is the one prerequisite that cannot be worked around in code.
+
+The database table is **not** created by hand — `contact-handler.php` creates
+`contact_enquiries` on the first enquiry. `deploy/cpanel/schema.sql` is kept
+only as a reference copy of the same DDL.
 
 ## Two ways to deploy
 
@@ -91,13 +100,14 @@ The script refuses to produce a bundle that still points at `/api/contact`, or
 that is missing `index.html`, `404.html` or `_next/static`, so a broken export
 fails here rather than on the live site.
 
-## Step 2 — Create the database table
+## Step 2 — Database
 
-cPanel → *phpMyAdmin* → select the site database → *SQL* tab → paste the
-contents of `deploy/cpanel/schema.sql` → *Go*.
+Nothing to do. `contact-handler.php` runs `CREATE TABLE IF NOT EXISTS` on the
+first enquiry, so the table appears by itself.
 
-Confirm the database user has `SELECT` and `INSERT` on that database
-(cPanel → *MySQL Databases* → *Add User To Database*).
+Only confirm the database user has `SELECT`, `INSERT` and `CREATE` on the
+database (cPanel → *MySQL Databases* → *Add User To Database*). "All
+privileges" is fine.
 
 ## Step 3 — Upload
 
@@ -117,40 +127,48 @@ enable *Settings* → *Show Hidden Files*.
 
 ## Step 4 — Configure the contact form
 
-In the document root, copy `config.sample.php` to `config.php` and fill in the
-real database name, user and password, and a long random `ip_salt`.
+A `config.php` can be shipped inside the bundle with everything pre-filled
+except the database password, leaving a single line to edit on the server:
 
-```bash
-php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"   # generates an ip_salt
+```php
+'db_pass' => 'PASTE_DATABASE_PASSWORD_HERE',
 ```
 
-Then `chmod 600 config.php` and delete `config.sample.php` from the server.
+Otherwise copy `config.sample.php` to `config.php` and fill it in, generating
+the `ip_salt` and `check_token` with:
 
-`config.php` holds live credentials. It is in `.gitignore` and denied by
-`.htaccess` — never commit it, and never paste its contents into a chat,
-an issue or an email.
+```bash
+php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
+```
 
-If `config.php` is missing, the form does not break: it tells the visitor to
-call or email the hospital instead, which is the same fallback Vercel uses when
-`RESEND_API_KEY` is unset.
+Either way, `chmod 600 config.php` and delete `config.sample.php` from the
+server afterwards.
+
+`config.php` holds live credentials. It is git-ignored and denied by
+`.htaccess` — never commit it, and prefer not to send it over chat. If it has
+been through a chat app, rotate the database password afterwards.
+
+If `config.php` is missing the form does not break: it tells the visitor to
+call or email the hospital, the same fallback Vercel uses without
+`RESEND_API_KEY`.
 
 ## Step 5 — Verify
 
-```bash
-curl -sI https://www.maryhelphospital.org/            # 200, security headers
-curl -sI http://maryhelphospital.org/                 # 301 to https://www.…
-curl -sI https://www.maryhelphospital.org/about       # 200 (extensionless)
-curl -sI https://www.maryhelphospital.org/no-such-page  # 404
-curl -s  https://www.maryhelphospital.org/robots.txt
+Open `deploy-check.php` in a browser with the token from `config.php`:
+
+```
+https://www.maryhelphospital.org/deploy-check.php?token=<check_token>
 ```
 
-Then in a browser:
+It reports PHP version, `pdo_mysql`, every required file, the database
+connection, the enquiries table, HTTPS and the canonical host — green or red,
+in one page. Without the correct token it returns 404, so it reveals nothing
+while it exists.
 
-- Home, Services, a single service page, News, Contact, Emergency all render
-  with photographs.
-- Submit the contact form. Expect the "Thank you" panel, a row in
-  `contact_enquiries`, and an email at the `contact_to` address.
-- Check the header nav and the mobile menu.
+**Delete `deploy-check.php` once the page is all green.**
+
+Then submit the contact form once and confirm the "Thank you" panel appears
+and an email arrives at `contact_to`.
 
 ## Ongoing deploys
 

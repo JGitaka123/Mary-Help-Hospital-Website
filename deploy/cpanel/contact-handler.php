@@ -3,12 +3,15 @@
  * Contact endpoint for the static (cPanel) deployment.
  *
  * The static export cannot run src/app/api/contact/route.ts, so this mirrors
- * that route's contract exactly: it accepts the same JSON body and returns the
- * same { ok: boolean, message: string } shape, so ContactForm.tsx needs no
- * change beyond NEXT_PUBLIC_CONTACT_ENDPOINT pointing here.
+ * that route's contract exactly: same JSON body in, same { ok, message } out,
+ * so ContactForm.tsx needs no change beyond NEXT_PUBLIC_CONTACT_ENDPOINT.
  *
- * Credentials live in config.php, which is created on the server and is NOT in
- * git. See docs/DEPLOYMENT-CPANEL.md.
+ * Targets PHP 7.4+ so it runs on a stock cPanel account with no version
+ * change, and creates its own table on first use so nothing has to be run by
+ * hand in phpMyAdmin.
+ *
+ * Credentials live in config.php, which is never committed. See
+ * docs/DEPLOYMENT-CPANEL.md.
  */
 
 declare(strict_types=1);
@@ -24,20 +27,49 @@ const RATE_WINDOW_MINUTES = 10;
 const PHONE_DISPLAY = '+254 724 936 177';
 const FALLBACK_EMAIL = 'info@maryhelphospital.org';
 
-function respond(bool $ok, string $message, int $status = 200): never
+/**
+ * Created on first use. Kept identical to deploy/cpanel/schema.sql — if you
+ * change one, change the other.
+ */
+const TABLE_DDL = <<<SQL
+CREATE TABLE IF NOT EXISTS contact_enquiries (
+  id             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name           VARCHAR(120)  NOT NULL,
+  phone          VARCHAR(30)   NOT NULL,
+  email          VARCHAR(160)  NOT NULL DEFAULT '',
+  department     VARCHAR(80)   NOT NULL,
+  preferred_date VARCHAR(20)   NOT NULL DEFAULT '',
+  preferred_time VARCHAR(40)   NOT NULL DEFAULT '',
+  message        TEXT          NOT NULL,
+  ip_hash        CHAR(64)      NOT NULL,
+  handled_at     DATETIME      NULL DEFAULT NULL,
+  created_at     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_created_at (created_at),
+  KEY idx_ip_hash_created_at (ip_hash, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+SQL;
+
+/**
+ * Sends the JSON response and stops. No `never` return type: that is PHP 8.1+
+ * and this file has to run on 7.4.
+ */
+function respond(bool $ok, string $message, int $status = 200): void
 {
     http_response_code($status);
     echo json_encode(['ok' => $ok, 'message' => $message], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-function clean(mixed $value, int $max): string
+function clean($value, int $max): string
 {
     if (!is_string($value)) {
         return '';
     }
     // mb_substr keeps multi-byte names intact where a byte slice would not.
-    return mb_substr(trim($value), 0, $max);
+    return function_exists('mb_substr')
+        ? mb_substr(trim($value), 0, $max)
+        : substr(trim($value), 0, $max);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -45,14 +77,16 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     respond(false, 'Method not allowed.', 405);
 }
 
+$unconfigured = sprintf(
+    'Thank you. Online messaging is not yet active, so please call %s or email %s and we will help you right away.',
+    PHONE_DISPLAY,
+    FALLBACK_EMAIL
+);
+
 $configPath = __DIR__ . '/config.php';
 if (!is_file($configPath)) {
     error_log('[contact] config.php missing');
-    respond(true, sprintf(
-        'Thank you. Online messaging is not yet active, so please call %s or email %s and we will help you right away.',
-        PHONE_DISPLAY,
-        FALLBACK_EMAIL
-    ));
+    respond(true, $unconfigured);
 }
 $config = require $configPath;
 
@@ -86,7 +120,7 @@ if ($email !== '' && !preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $email)) {
 }
 
 // Only the first hop of X-Forwarded-For is meaningful, and it is hashed rather
-// than stored: rate limiting needs to match addresses, not to identify people.
+// than stored: rate limiting needs to match addresses, not identify people.
 $forwarded = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
 $ip = $forwarded !== ''
     ? trim(explode(',', $forwarded)[0])
@@ -94,14 +128,21 @@ $ip = $forwarded !== ''
 $ipHash = hash('sha256', ($config['ip_salt'] ?? '') . $ip);
 
 $stored = false;
-$pdo = null;
 try {
+    if (!extension_loaded('pdo_mysql')) {
+        throw new RuntimeException('pdo_mysql extension not enabled');
+    }
+
     $pdo = new PDO(
         sprintf('mysql:host=%s;dbname=%s;charset=utf8mb4', $config['db_host'], $config['db_name']),
         $config['db_user'],
         $config['db_pass'],
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false]
     );
+
+    // First run on a fresh account: create the table rather than requiring
+    // someone to paste SQL into phpMyAdmin. No-op once it exists.
+    $pdo->exec(TABLE_DDL);
 
     // RATE_WINDOW_MINUTES is a literal constant, not input: MySQL will not take
     // a bound parameter as the INTERVAL quantity.
@@ -121,9 +162,9 @@ try {
     );
     $insert->execute([$name, $phone, $email, $department, $date, $time, $message, $ipHash]);
     $stored = true;
-} catch (PDOException $e) {
-    // A database outage must not lose the enquiry; the email below still runs.
-    error_log('[contact] database error: ' . $e->getMessage());
+} catch (Exception $e) {
+    // A database problem must not lose the enquiry; the email below still runs.
+    error_log('[contact] database unavailable: ' . $e->getMessage());
 }
 
 $to = $config['contact_to'] ?? FALLBACK_EMAIL;
@@ -145,7 +186,9 @@ $plain .= "\n" . $message . "\n";
 
 // Header injection guard: a newline in the subject or Reply-To would let a
 // submitter add arbitrary mail headers.
-$safeHeader = static fn (string $v): string => str_replace(["\r", "\n"], ' ', $v);
+$safeHeader = static function (string $v): string {
+    return str_replace(["\r", "\n"], ' ', $v);
+};
 
 $headers = [
     'From: Mary Help Hospital Website <' . $safeHeader($from) . '>',
@@ -157,7 +200,9 @@ if ($email !== '') {
 }
 
 $subject = $safeHeader(sprintf('[Website] %s from %s', $department, $name));
-$sent = @mail($to, $subject, $plain, implode("\r\n", $headers));
+$sent = function_exists('mail')
+    ? @mail($to, $subject, $plain, implode("\r\n", $headers))
+    : false;
 
 if (!$sent && !$stored) {
     error_log('[contact] both mail and database failed');
