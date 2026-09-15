@@ -61,6 +61,7 @@ cp -r "$ROOT/out" "$ROOT/dist-cpanel"
 cp "$ROOT/deploy/cpanel/.htaccess"            "$ROOT/dist-cpanel/.htaccess"
 cp "$ROOT/deploy/cpanel/contact-handler.php"  "$ROOT/dist-cpanel/contact-handler.php"
 cp "$ROOT/deploy/cpanel/config.sample.php"    "$ROOT/dist-cpanel/config.sample.php"
+cp "$ROOT/deploy/cpanel/deploy-check.php"     "$ROOT/dist-cpanel/deploy-check.php"
 
 # Sanity checks: fail loudly here rather than silently shipping a broken site.
 test -f "$ROOT/dist-cpanel/index.html"   || { echo "error: index.html missing" >&2; exit 1; }
