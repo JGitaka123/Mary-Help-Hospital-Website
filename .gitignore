@@ -47,3 +47,6 @@ next-env.d.ts
 deploy/cpanel/config.php
 /dist-cpanel/
 *.zip
+# ...except the published cPanel bundle, which is downloaded from GitHub
+# rather than emailed around. Rebuild with scripts/build-cpanel.sh.
+!releases/*.zip
