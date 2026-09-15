@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Built bundle for the cPanel deploy (scripts/build-cpanel.sh).
+    "dist-cpanel/**",
   ]),
 ]);
 

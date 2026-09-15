@@ -1,0 +1,129 @@
+name: Deploy to cPanel
+
+# Manual only. A hospital's live site should never redeploy as a side effect
+# of a push; someone decides when it goes out.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List the changes without uploading anything"
+        type: boolean
+        default: false
+      remote_dir:
+        description: "Document root on the server (check cPanel > Domains)"
+        type: string
+        default: "public_html"
+      delete_stale:
+        description: "Delete remote files that are no longer in the build"
+        type: boolean
+        default: false
+      insecure_tls:
+        description: "Skip FTPS certificate check (only if the host's cert does not match)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-cpanel
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build static export
+        run: ./scripts/build-cpanel.sh
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.maryhelphospital.org
+          NEXT_PUBLIC_CONTACT_ENDPOINT: /contact-handler.php
+
+      # The build script already fails on a missing index.html or a bundle
+      # still pointing at /api/contact. This is the last gate before upload.
+      - name: Verify the bundle
+        run: |
+          set -euo pipefail
+          test -s dist-cpanel/index.html
+          test -s dist-cpanel/404.html
+          test -s dist-cpanel/.htaccess
+          test -s dist-cpanel/contact-handler.php
+          test -d dist-cpanel/_next/static
+          grep -q "maryhelphospital.org" dist-cpanel/sitemap.xml
+          if [ -e dist-cpanel/config.php ]; then
+            echo "config.php must never be in the bundle" >&2; exit 1
+          fi
+          echo "bundle ok: $(find dist-cpanel -type f | wc -l) files"
+
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Upload over FTPS
+        env:
+          FTP_HOST: ${{ secrets.CPANEL_FTP_HOST }}
+          FTP_USER: ${{ secrets.CPANEL_FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          REMOTE_DIR: ${{ inputs.remote_dir }}
+        run: |
+          set -euo pipefail
+          for v in FTP_HOST FTP_USER FTP_PASSWORD; do
+            if [ -z "${!v:-}" ]; then
+              echo "Missing repository secret: CPANEL_${v}" >&2; exit 1
+            fi
+          done
+
+          MIRROR_FLAGS="--reverse --verbose --parallel=4 --no-perms"
+          # config.php holds the live database credentials and exists only on
+          # the server. It must survive every deploy.
+          MIRROR_FLAGS="$MIRROR_FLAGS --exclude-glob config.php"
+          MIRROR_FLAGS="$MIRROR_FLAGS --exclude-glob config.sample.php"
+          # Host-managed paths that are not ours to touch.
+          MIRROR_FLAGS="$MIRROR_FLAGS --exclude cgi-bin/ --exclude .well-known/"
+
+          if [ "${{ inputs.delete_stale }}" = "true" ]; then
+            MIRROR_FLAGS="$MIRROR_FLAGS --delete"
+          fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            MIRROR_FLAGS="$MIRROR_FLAGS --dry-run"
+            echo "::notice::DRY RUN - nothing will be uploaded"
+          fi
+
+          VERIFY=yes
+          if [ "${{ inputs.insecure_tls }}" = "true" ]; then VERIFY=no; fi
+
+          lftp <<LFTP
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate $VERIFY
+          set net:max-retries 3
+          set net:reconnect-interval-base 5
+          set net:timeout 30
+          set mirror:parallel-transfer-count 4
+          open "$FTP_HOST"
+          user "$FTP_USER" "$FTP_PASSWORD"
+          mirror $MIRROR_FLAGS dist-cpanel/ "$REMOTE_DIR/"
+          bye
+          LFTP
+
+      - name: Check the site responds
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          set -euo pipefail
+          sleep 10
+          for url in \
+            "https://www.maryhelphospital.org/" \
+            "https://www.maryhelphospital.org/about" \
+            "https://www.maryhelphospital.org/contact" \
+            "https://www.maryhelphospital.org/robots.txt"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url" || echo 000)
+            echo "$code  $url"
+            [ "$code" = "200" ] || { echo "::error::$url returned $code"; exit 1; }
+          done
+          echo "::notice::Live at https://www.maryhelphospital.org/"

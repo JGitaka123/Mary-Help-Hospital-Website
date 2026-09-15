@@ -3,6 +3,10 @@ import { site } from "@/content/site";
 import { services } from "@/content/services";
 import { news } from "@/content/news";
 
+// Generated from content modules at build time, so it can be prerendered; the
+// static export (STATIC_EXPORT=1) requires this to be explicit.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
   const now = new Date();

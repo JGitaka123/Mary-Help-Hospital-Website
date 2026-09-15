@@ -22,6 +22,10 @@ const departments = [
 
 type Status = { kind: "idle" } | { kind: "sending" } | { kind: "success"; message: string } | { kind: "error"; message: string };
 
+// Vercel serves the Node route handler; the cPanel static export posts to a
+// PHP endpoint of the same shape. Set NEXT_PUBLIC_CONTACT_ENDPOINT to override.
+const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || "/api/contact";
+
 const inputClass =
   "mt-1.5 block w-full rounded-xl border border-line bg-white px-4 py-3 text-ink shadow-sm placeholder:text-muted/70 focus:border-blue focus:outline-none focus:ring-4 focus:ring-blue/15";
 
@@ -34,7 +38,7 @@ export function ContactForm() {
     const data = Object.fromEntries(new FormData(form).entries());
     setStatus({ kind: "sending" });
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -7,6 +7,10 @@ export const alt = `${site.name}, Thika`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Rendered once at build time: nothing here depends on the request, and the
+// static export (STATIC_EXPORT=1) requires route handlers to be explicit.
+export const dynamic = "force-static";
+
 export default async function OpenGraphImage() {
   const logo = await readFile(join(process.cwd(), "public/images/logo-mark-white-ring.png"));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
