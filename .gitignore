@@ -42,3 +42,8 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# cPanel deploy: real credentials, created on the server only
+deploy/cpanel/config.php
+/dist-cpanel/
+*.zip

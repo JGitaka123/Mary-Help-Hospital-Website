@@ -1,0 +1,99 @@
+# Mary Help of the Sick Mission Hospital — Apache config for the static export.
+# Deployed to the document root of www.maryhelphospital.org.
+# Replaces what next.config.ts `headers()` and the Next.js server do on Vercel.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------
+# Never serve the database credentials or deployment leftovers
+# ---------------------------------------------------------------------------
+<FilesMatch "^(config\.php|.*\.sql|.*\.md|\.env.*|.*\.log)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # -------------------------------------------------------------------------
+  # Canonical origin: https://www.maryhelphospital.org
+  # Two separate rules so the scheme and host checks cannot mask each other.
+  # X-Forwarded-Proto covers hosts that terminate TLS at a front-end proxy.
+  # -------------------------------------------------------------------------
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.maryhelphospital.org%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{HTTP_HOST} !^www\.maryhelphospital\.org$ [NC]
+  RewriteCond %{HTTP_HOST} !^$
+  RewriteRule ^ https://www.maryhelphospital.org%{REQUEST_URI} [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Drop trailing slashes so URLs match the canonicals in the sitemap
+  # (the export is built with trailingSlash: false).
+  # -------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Extensionless routes: /about -> about.html, /services/renal -> services/renal.html
+  # -------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Security headers — mirrors the securityHeaders list in next.config.ts
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Caching. Next.js fingerprints everything under /_next/static, so those are
+# immutable. HTML must stay revalidated or content edits never reach visitors.
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compression
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml \
+    application/javascript application/json application/xml \
+    image/svg+xml application/manifest+json
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/avif .avif
+  AddType image/webp .webp
+</IfModule>
